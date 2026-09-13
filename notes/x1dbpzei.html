@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-09-13-Zotero-Obsidian-플러그인-최신버전-기능-비교</title>
+<meta name="description" content="# Zotero ↔ Obsidian 플러그인 최신 버전 기능 비교 (2026-09-13) 조사 기준일 2026-09-13. 공식 문서·GitHub 릴리스·체인지로그를 읽고 정리했으며 코드는 복사하지 않았다. CMDS Zotero는 워크트리 브랜치 `worktree-feature-parity-0.3`의 0.3.0(미병합, 위키 볼트 설치본) 기준이다. ...">
+<link rel="canonical" href="https://johnfkoo951.github.io/obsidian-shared-notes/notes/x1dbpzei.html">
+<meta property="og:url" content="https://johnfkoo951.github.io/obsidian-shared-notes/notes/x1dbpzei.html">
+
+<link rel="icon" type="image/png" href="https://cmdspace.work/assets/logos/cmds-logo-round.png">
+<link rel="apple-touch-icon" href="https://cmdspace.work/assets/logos/cmds-logo-round.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CMDSPACE">
+<meta property="og:title" content="2026-09-13-Zotero-Obsidian-플러그인-최신버전-기능-비교">
+<meta property="og:description" content="# Zotero ↔ Obsidian 플러그인 최신 버전 기능 비교 (2026-09-13) 조사 기준일 2026-09-13. 공식 문서·GitHub 릴리스·체인지로그를 읽고 정리했으며 코드는 복사하지 않았다. CMDS Zotero는 워크트리 브랜치 `worktree-feature-parity-0.3`의 0.3.0(미병합, 위키 볼트 설치본) 기준이다. ...">
+<meta property="og:image" content="https://share.cmdspace.work/assets/og/og-share.png">
+<meta property="og:image:secure_url" content="https://share.cmdspace.work/assets/og/og-share.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CMDS Share — 2026-09-13-Zotero-Obsidian-플러그인-최신버전-기능-비교">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="2026-09-13-Zotero-Obsidian-플러그인-최신버전-기능-비교">
+<meta name="twitter:description" content="# Zotero ↔ Obsidian 플러그인 최신 버전 기능 비교 (2026-09-13) 조사 기준일 2026-09-13. 공식 문서·GitHub 릴리스·체인지로그를 읽고 정리했으며 코드는 복사하지 않았다. CMDS Zotero는 워크트리 브랜치 `worktree-feature-parity-0.3`의 0.3.0(미병합, 위키 볼트 설치본) 기준이다. ...">
+<meta name="twitter:image" content="https://share.cmdspace.work/assets/og/og-share.png">
+
+<script>
+(function(){try{var t=localStorage.getItem('cmds-theme');if(t){document.documentElement.dataset.theme=t;}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.dataset.theme='dark';}else{document.documentElement.dataset.theme='light';}}catch(e){}})();
+</script>
+
+<style>
+:root {
+	--max: 750px;
+	--text: #1a1a1a;
+	--muted: #666;
+	--bg: #fff;
+	--accent: #134538;
+	--accent-light: #1a5c4a;
+	--accent-on: #fff;
+	--border: #e5e5e5;
+	--code-bg: #f5f5f5;
+	--card-bg: #fff;
+	--pre-bg: #f5f6f4;
+	--pre-fg: #24292e;
+	--graph-note: #22896a;
+}
+[data-theme="dark"] {
+	--text: rgb(207, 206, 196);
+	--muted: rgb(136, 134, 129);
+	--bg: rgb(28, 27, 26);
+	--accent: rgb(243, 139, 168);
+	--accent-light: rgb(243, 139, 168);
+	--accent-on: #111;
+	--border: rgb(52, 51, 49);
+	--code-bg: rgb(16, 15, 15);
+	--card-bg: rgb(16, 15, 15);
+	--pre-bg: rgb(8, 7, 7);
+	--pre-fg: rgb(207, 206, 196);
+	--graph-note: rgb(243, 139, 168);
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+	--text: rgb(207, 206, 196);
+	--muted: rgb(136, 134, 129);
+	--bg: rgb(28, 27, 26);
+	--accent: rgb(243, 139, 168);
+	--accent-light: rgb(243, 139, 168);
+	--accent-on: #111;
+	--border: rgb(52, 51, 49);
+	--code-bg: rgb(16, 15, 15);
+	--card-bg: rgb(16, 15, 15);
+	--pre-bg: rgb(8, 7, 7);
+	--pre-fg: rgb(207, 206, 196);
+	--graph-note: rgb(243, 139, 168);
+	}
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { color-scheme: light dark; scroll-behavior: smooth; }
+html, body { overflow-x: hidden; }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Pretendard Variable', 'Pretendard', 'Apple SD Gothic Neo', 'Segoe UI', system-ui, sans-serif;
+	color: var(--text); background: var(--bg); line-height: 1.75;
+	font-size: 16px; -webkit-font-smoothing: antialiased;
+	transition: background-color .2s, color .2s;
+}
+
+.side-tools {
+	position: fixed; top: 1rem; right: 1rem; z-index: 100;
+	display: flex; flex-direction: column; gap: 0.5rem;
+}
+.tool-btn {
+	width: 36px; height: 36px;
+	background: var(--card-bg);
+	border: 1px solid var(--border);
+	border-radius: 50%;
+	cursor: pointer;
+	display: grid; place-items: center;
+	color: var(--text);
+	transition: border-color .15s, background .15s, color .15s;
+}
+.tool-btn:hover { border-color: var(--accent); }
+.tool-btn.active { border-color: var(--accent); color: var(--accent); }
+.tool-btn svg { width: 16px; height: 16px; }
+
+.side-panel {
+	position: fixed; top: 1rem; right: 4rem; z-index: 99;
+	width: 280px; max-height: calc(100vh - 2rem);
+	overflow-y: auto;
+	background: var(--card-bg);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 1rem 1.1rem;
+	display: none;
+	box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.side-panel.open { display: block; }
+.panel-head {
+	display: flex; align-items: center; justify-content: space-between;
+	margin-bottom: 0.6rem;
+}
+.panel-head h3 {
+	font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+	letter-spacing: 0.08em; color: var(--muted);
+}
+.pin-btn {
+	background: none; border: none; cursor: pointer; color: var(--muted);
+	width: 22px; height: 22px; display: grid; place-items: center;
+	border-radius: 5px;
+}
+.pin-btn:hover { color: var(--accent); background: var(--code-bg); }
+.pin-btn svg { width: 13px; height: 13px; }
+.g-controls { display: flex; gap: 2px; align-items: center; }
+
+/* docked mode: persistent right sidebar — TOC on top (scrolls), graph fills the rest */
+body.cmds-docked { padding-right: 312px; }
+body.cmds-docked .side-tools { right: calc(312px + 1rem); }
+body.cmds-docked #tocToggle, body.cmds-docked #graphToggle { display: none; }
+body.cmds-docked .pin-btn { color: var(--accent); }
+.side-dock {
+	position: fixed; top: 0; right: 0; bottom: 0; width: 312px; z-index: 98;
+	background: var(--card-bg); border-left: 1px solid var(--border);
+	display: flex; flex-direction: column;
+}
+.side-dock[hidden] { display: none; }
+.side-dock .side-panel {
+	position: static; display: block; width: auto; max-height: none;
+	border: none; border-radius: 0; box-shadow: none;
+}
+.side-dock #tocPanel { flex: 0 1 auto; min-height: 120px; max-height: 58%; overflow-y: auto; }
+.side-dock #graphPanel {
+	flex: 1 1 auto; min-height: 220px; overflow: hidden;
+	border-top: 1px solid var(--border);
+	display: flex; flex-direction: column;
+}
+.side-dock #graphPanel canvas { flex: 1; min-height: 0; }
+#graphCanvas { touch-action: none; cursor: grab; }
+#graphCanvas.dragging { cursor: grabbing; }
+#graphCanvas.on-node { cursor: pointer; }
+#tocList { display: flex; flex-direction: column; gap: 2px; }
+#tocList a {
+	color: var(--text); text-decoration: none; font-size: 0.82rem;
+	line-height: 1.4; padding: 0.25rem 0.5rem; border-radius: 6px;
+	display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+#tocList a:hover { background: var(--code-bg); color: var(--accent); }
+#tocList a.active { background: var(--code-bg); color: var(--accent); font-weight: 600; }
+#tocList a.toc-h2 { padding-left: 1.1rem; }
+#tocList a.toc-h3 { padding-left: 1.7rem; font-size: 0.78rem; color: var(--muted); }
+#tocList a.toc-h4 { padding-left: 2.3rem; font-size: 0.78rem; color: var(--muted); }
+#graphCanvas { width: 100%; display: block; }
+.graph-legend {
+	display: flex; gap: 0.9rem; margin-top: 0.5rem;
+	font-size: 0.7rem; color: var(--muted);
+}
+.graph-legend span::before {
+	content: ''; display: inline-block; width: 8px; height: 8px;
+	border-radius: 50%; margin-right: 4px;
+}
+.graph-legend .lg-link::before { background: var(--graph-note); }
+.graph-legend .lg-tag::before { background: #E985A2; }
+
+main {
+	max-width: var(--max); margin: 0 auto; padding: 4rem 1.5rem 3rem;
+}
+
+#note-content { font-size: 1rem; overflow-wrap: break-word; }
+#note-content h1, #note-content h2, #note-content h3,
+#note-content h4, #note-content h5, #note-content h6 {
+	font-weight: 700; letter-spacing: -0.02em; line-height: 1.3;
+	margin: 2rem 0 0.75rem; scroll-margin-top: 1.5rem;
+}
+#note-content h1 { font-size: 1.85rem; margin-top: 2.4rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+#note-content h2 { font-size: 1.4rem; margin-top: 2.2rem; }
+#note-content h3 { font-size: 1.18rem; }
+#note-content h4 { font-size: 1.06rem; color: var(--text); margin-top: 1.8rem; }
+#note-content h5 { font-size: 0.98rem; color: var(--text); }
+#note-content h6 { font-size: 0.9rem; color: var(--muted); }
+#note-content p { margin: 0.85rem 0; }
+#note-content ul, #note-content ol { margin: 0.85rem 0 0.85rem 1.4rem; }
+#note-content li { margin: 0.35rem 0; }
+#note-content li > ul, #note-content li > ol { margin: 0.25rem 0 0.25rem 1.2rem; }
+#note-content a {
+	color: var(--accent); text-decoration: none;
+	border-bottom: 1px solid transparent; transition: border-color .15s;
+}
+#note-content a:hover { border-bottom-color: var(--accent); }
+#note-content code {
+	background: var(--code-bg); padding: 0.18em 0.45em; border-radius: 6px;
+	font-size: 0.86em; font-family: 'SF Mono', 'Menlo', monospace;
+}
+#note-content pre {
+	background: var(--pre-bg); color: var(--pre-fg);
+	border: 1px solid var(--border);
+	padding: 1rem; border-radius: 12px;
+	overflow-x: auto; font-size: 0.85rem; line-height: 1.6;
+	font-family: 'SF Mono', 'Menlo', monospace; margin: 1rem 0;
+	position: relative;
+}
+.code-copy {
+	position: absolute; top: 8px; right: 8px;
+	width: 28px; height: 28px; border-radius: 6px;
+	background: color-mix(in srgb, var(--card-bg) 92%, transparent);
+	backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
+	color: var(--muted); cursor: pointer;
+	display: grid; place-items: center;
+	opacity: 0; transition: opacity .15s, color .15s, border-color .15s;
+}
+#note-content pre:hover .code-copy, .code-copy.copied { opacity: 1; }
+.code-copy:hover, .code-copy.copied { color: var(--accent); border-color: var(--accent); }
+.code-copy svg { width: 14px; height: 14px; }
+.h-anchor {
+	margin-left: 0.4rem; opacity: 0; color: var(--muted);
+	border-bottom: none !important; transition: opacity .15s, color .15s;
+}
+.h-anchor svg { width: 0.75em; height: 0.75em; }
+.h-anchor:hover { color: var(--accent); }
+#note-content h1:hover .h-anchor, #note-content h2:hover .h-anchor,
+#note-content h3:hover .h-anchor, #note-content h4:hover .h-anchor { opacity: 0.75; }
+#note-content pre code { background: transparent; padding: 0; font-size: 1em; }
+#note-content pre[data-lang]::before {
+	content: attr(data-lang);
+	position: absolute; top: 7px; left: 12px;
+	font-size: 0.66rem; font-weight: 600; letter-spacing: 0.05em;
+	color: var(--muted); opacity: 0.75; text-transform: lowercase;
+	font-family: -apple-system, sans-serif;
+}
+#note-content pre[data-lang] { padding-top: 1.9rem; }
+.mermaid-container { margin: 1rem 0; overflow-x: auto; text-align: center; }
+.mermaid-container svg { max-width: 100%; height: auto; }
+#note-content blockquote {
+	border-left: 3px solid var(--accent); padding: 0.5rem 1rem;
+	margin: 1rem 0; color: var(--muted); background: var(--code-bg);
+	border-radius: 0 8px 8px 0;
+}
+#note-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 1rem 0; }
+#note-content table {
+	border-collapse: collapse; margin: 1rem 0;
+	font-size: 0.9rem;
+	/* wide tables scroll inside themselves instead of panning the page */
+	display: block; width: max-content; min-width: 60%; max-width: 100%;
+	overflow-x: auto;
+}
+#note-content th, #note-content td {
+	border: none; border-bottom: 1px solid var(--border);
+	padding: 0.65rem 0.9rem; text-align: left; vertical-align: top;
+}
+#note-content th { font-weight: 700; font-size: 0.85rem; color: var(--muted); border-bottom-width: 2px; }
+#note-content tr:last-child td { border-bottom: none; }
+#note-content hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+#note-content mark { background: rgba(233,133,162,0.25); padding: 0 0.2rem; border-radius: 3px; }
+#note-content .callout {
+	--co: var(--accent);
+	background: var(--code-bg); border-radius: 8px; padding: 0.9rem 1rem;
+	margin: 1rem 0; border-left: 3px solid var(--co);
+}
+#note-content .callout-title {
+	display: flex; align-items: center; gap: 0.5em;
+	font-weight: 700; color: var(--co); margin: 0;
+}
+#note-content .callout-icon { display: flex; align-items: center; flex-shrink: 0; }
+#note-content .callout-icon svg, #note-content .callout-title > svg {
+	width: 1.1em; height: 1.1em;
+}
+#note-content .callout-title-inner { line-height: 1.45; }
+#note-content .callout-fold { display: none; }
+#note-content .callout-content > :first-child { margin-top: 0.45rem; }
+#note-content .callout-content > :last-child { margin-bottom: 0.1rem; }
+#note-content .callout[data-callout="abstract"], #note-content .callout[data-callout="summary"], #note-content .callout[data-callout="tldr"] { --co: #23a8b8; }
+#note-content .callout[data-callout="info"], #note-content .callout[data-callout="note"], #note-content .callout[data-callout="todo"] { --co: #4a8edb; }
+#note-content .callout[data-callout="tip"], #note-content .callout[data-callout="hint"], #note-content .callout[data-callout="important"] { --co: #23b89b; }
+#note-content .callout[data-callout="success"], #note-content .callout[data-callout="check"], #note-content .callout[data-callout="done"] { --co: #3aa657; }
+#note-content .callout[data-callout="question"], #note-content .callout[data-callout="help"], #note-content .callout[data-callout="faq"] { --co: #d9a13b; }
+#note-content .callout[data-callout="warning"], #note-content .callout[data-callout="caution"], #note-content .callout[data-callout="attention"] { --co: #e0813a; }
+#note-content .callout[data-callout="danger"], #note-content .callout[data-callout="error"], #note-content .callout[data-callout="failure"], #note-content .callout[data-callout="fail"], #note-content .callout[data-callout="missing"], #note-content .callout[data-callout="bug"] { --co: #e05252; }
+#note-content .callout[data-callout="example"] { --co: #8a6fd6; }
+#note-content .callout[data-callout="quote"], #note-content .callout[data-callout="cite"] { --co: var(--muted); }
+#note-content .internal-link {
+	color: var(--accent); border-bottom: 1px dashed var(--accent); cursor: help;
+}
+
+.cmds-meta {
+	max-width: var(--max); margin: 0 auto;
+	padding: 2rem 1.5rem 2rem; border-top: 1px solid var(--border);
+	font-size: 0.75rem; color: var(--muted); text-align: center;
+	display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+}
+.cmds-meta img { width: 28px; height: 28px; border-radius: 50%; }
+.cmds-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+.cmds-badge {
+	display: inline-flex; align-items: center; gap: 0.35em;
+	font-size: 0.7rem; font-weight: 600; color: var(--muted);
+	border: 1px solid var(--border); border-radius: 999px;
+	padding: 0.22rem 0.65rem; background: var(--card-bg);
+}
+.cmds-badge svg { width: 12px; height: 12px; }
+.cmds-badge.b-e2e { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.cmds-badge.b-soon { color: #e0813a; border-color: color-mix(in srgb, #e0813a 45%, var(--border)); }
+.cmds-badge.b-expired { color: #e05252; border-color: color-mix(in srgb, #e05252 45%, var(--border)); }
+.cmds-meta a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.cmds-meta a:hover { text-decoration: underline; }
+.cmds-theme-note { font-size: 0.68rem; color: var(--muted); opacity: 0.75; }
+.cmds-author-link {
+	margin-top: 0.35rem; font-size: 0.85rem; font-weight: 700;
+	letter-spacing: -0.01em;
+}
+.cmds-loading { color: var(--muted); font-style: italic; }
+.decrypt-error {
+	color: #c62828; background: #fce4ec; padding: 1rem; border-radius: 8px;
+	border: 1px solid #c62828; margin: 2rem 0; text-align: center;
+}
+[data-theme="dark"] .decrypt-error { background: #4a1a24; color: #ff8899; border-color: #ff8899; }
+
+@media (max-width: 720px) {
+	.side-panel { right: 1rem; top: 4rem; width: min(280px, calc(100vw - 2rem)); }
+}
+</style>
+<link rel="stylesheet" href="https://johnfkoo951.github.io/obsidian-shared-notes/notes/css/ca221db06c05ad11114c22138bdbb8ff0fb06293.css">
+</head>
+<body>
+
+<div class="side-tools">
+	<button class="tool-btn" id="themeToggle" aria-label="Toggle theme">
+		<svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+	</button>
+	<button class="tool-btn" id="tocToggle" aria-label="Table of contents" hidden>
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg>
+	</button>
+	<button class="tool-btn" id="graphToggle" aria-label="Local graph" hidden>
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M10.8 6.9 6.2 16m7-9.1 4.6 9.1M7.2 18h9.6"/></svg>
+	</button>
+	<button class="tool-btn" id="mdCopy" aria-label="Copy markdown" title="Copy markdown" hidden>
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>
+	</button>
+	<button class="tool-btn" id="mdDownload" aria-label="Download markdown" title="Download .md" hidden>
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M4 19h16"/></svg>
+	</button>
+</div>
+
+<div class="side-dock" id="sideDock" hidden></div>
+
+<aside class="side-panel" id="tocPanel"><div class="panel-head"><h3>Contents</h3><button class="pin-btn" data-pin aria-label="Dock panels" title="Dock / undock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5M9 3h6l1 7 3 2H5l3-2 1-7z"/></svg></button></div><nav id="tocList"></nav></aside>
+<aside class="side-panel" id="graphPanel"><div class="panel-head"><h3>Local Graph</h3><span class="g-controls"><button class="pin-btn" id="gZoomOut" aria-label="Zoom out" title="Zoom out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg></button><button class="pin-btn" id="gZoomIn" aria-label="Zoom in" title="Zoom in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><button class="pin-btn" id="gReset" aria-label="Reset view" title="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg></button><button class="pin-btn" data-pin aria-label="Dock panels" title="Dock / undock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5M9 3h6l1 7 3 2H5l3-2 1-7z"/></svg></button></span></div><canvas id="graphCanvas"></canvas>
+<div class="graph-legend"><span class="lg-link">Notes</span><span class="lg-tag">Tags</span></div></aside>
+
+<main>
+	<article id="note-content" class="markdown-rendered"><h1 data-heading="Zotero ↔ Obsidian 플러그인 최신 버전 기능 비교 (2026-09-13)" dir="auto">Zotero ↔ Obsidian 플러그인 최신 버전 기능 비교 (2026-09-13)</h1>
+<p dir="auto">조사 기준일 2026-09-13. 공식 문서·GitHub 릴리스·체인지로그를 읽고 정리했으며 코드는 복사하지 않았다. CMDS Zotero는 워크트리 브랜치 <code>worktree-feature-parity-0.3</code>의 0.3.0(미병합, 위키 볼트 설치본) 기준이다. 실측하지 않은 항목은 "문서 기준"으로 표시했다.</p>
+<h2 data-heading="1. 대상과 최신 버전" dir="auto">1. 대상과 최신 버전</h2>
+<table>
+<thead>
+<tr>
+<th>플러그인</th>
+<th>최신 버전</th>
+<th>릴리스일</th>
+<th>유지보수</th>
+<th>메인 볼트 설치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CMDS Zotero</strong> (자체)</td>
+<td>0.3.0 dev</td>
+<td>2026-09-13</td>
+<td>개발 중</td>
+<td>0.2.0 (위키 볼트 0.3.0)</td>
+</tr>
+<tr>
+<td><strong>ZotLit</strong> (aidenlx)</td>
+<td>2.1.4</td>
+<td>2026-09-11</td>
+<td>활발. 2026-07~09 v2 리라이트, AGPL</td>
+<td>2.1.4</td>
+</tr>
+<tr>
+<td><strong>Zotero Integration</strong> (mgmeyers)</td>
+<td>3.2.1</td>
+<td>2024-08-11</td>
+<td>커뮤니티 아카이브, 2년 무릴리스</td>
+<td>3.2.1</td>
+</tr>
+<tr>
+<td><strong>Pandoc Reference List</strong> (mgmeyers)</td>
+<td>2.0.25</td>
+<td>아카이브</td>
+<td>커뮤니티 아카이브</td>
+<td>2.0.25</td>
+</tr>
+<tr>
+<td><strong>Zotero Bridge / Zotero Link</strong> (vanakat)</td>
+<td>1.6.x</td>
+<td>2024</td>
+<td>저활동</td>
+<td>Bridge 1.6.10 비활성</td>
+</tr>
+<tr>
+<td><strong>Citations</strong> (hans)</td>
+<td>0.1.3</td>
+<td>정체</td>
+<td>포크만 유지</td>
+<td>없음</td>
+</tr>
+<tr>
+<td><strong>Zotero Sync Client</strong> (frthjf)</td>
+<td>1.4.0</td>
+<td>2026-07</td>
+<td>활발</td>
+<td>없음</td>
+</tr>
+<tr>
+<td><strong>Zotero Better Notes</strong> (Zotero-side)</td>
+<td>활발</td>
+<td>2025~</td>
+<td>활발</td>
+<td>해당 없음</td>
+</tr>
+<tr>
+<td><strong>Actions &amp; Tags / Reading List / Attanger</strong> (Zotero-side)</td>
+<td>활발</td>
+<td>2025~2026</td>
+<td>활발, Zotero 8~10 대응</td>
+<td>해당 없음</td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="2. 연결 방식과 전제" dir="auto">2. 연결 방식과 전제</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>CMDS Zotero 0.3.0</th>
+<th>ZotLit 2.1.4</th>
+<th>Zotero Integration 3.2.1</th>
+<th>Pandoc Ref List</th>
+<th>Bridge/Link</th>
+<th>Sync Client</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>데이터 경로</td>
+<td>BBT JSON-RPC (<code>item.search/export/attachments/bibliography</code>) + CAYW</td>
+<td>Zotero <strong>SQLite 직접 읽기</strong>(reflink/immutable/full copy) + <strong>ZotLit Companion</strong> 애드온이 WAL checkpoint</td>
+<td>BBT CAYW + 자체 <strong>PDF Utility</strong> 바이너리로 주석 추출</td>
+<td><code>.bib</code> 내보내기 + 외부 Pandoc</td>
+<td>Zotero <strong>local API</strong>(7+) 또는 ZotServer</td>
+<td>Zotero <strong>Web API</strong> 또는 local API, 읽기 전용 미러</td>
+</tr>
+<tr>
+<td>BBT 필요</td>
+<td>필수</td>
+<td>불필요(권장)</td>
+<td>필수</td>
+<td>BBT 자동 export 권장</td>
+<td>불필요</td>
+<td>불필요</td>
+</tr>
+<tr>
+<td>Zotero 실행 필요</td>
+<td>필요</td>
+<td>불필요(DB 파일만)</td>
+<td>필요</td>
+<td>불필요</td>
+<td>필요</td>
+<td>클라우드 모드 불필요</td>
+</tr>
+<tr>
+<td>Zotero 쓰기</td>
+<td>없음</td>
+<td>없음(컴패니언은 checkpoint·메뉴만)</td>
+<td>없음</td>
+<td>없음</td>
+<td>없음</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>자체 HTTP 서버</td>
+<td>없음</td>
+<td>선택(9091, live update용)</td>
+<td>없음</td>
+<td>없음</td>
+<td>Bridge가 API 노출</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>Zotero 10</td>
+<td>BBT 계약 기준(9.0.6 실측)</td>
+<td>지원(2.1.0+)</td>
+<td>커뮤니티 확인만</td>
+<td>무관</td>
+<td>미확인</td>
+<td>무관</td>
+</tr>
+<tr>
+<td>아이덴티티</td>
+<td>libraryID+itemKey 정규 식별, citekey 히스토리</td>
+<td>Zotero 항목 ID + <code>source-id</code>(설치본 해시)</td>
+<td>citekey</td>
+<td>citekey</td>
+<td>Zotero 키</td>
+<td>Zotero 키</td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="3. 인용 작성" dir="auto">3. 인용 작성</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>CMDS Zotero 0.3.0</th>
+<th>ZotLit 2.1.4</th>
+<th>Zotero Integration</th>
+<th>Pandoc Ref List</th>
+<th>Citations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인라인 서제스터</td>
+<td><code>[@</code> (옵션 bare <code>@</code>), 로컬 인덱스, Shift+Enter bare 키</td>
+<td><code>[@</code>/<code>【@</code>/옵션 <code>@</code>, 전 라이브러리 스코프 통합 검색, Shift+Enter 대체 포맷</td>
+<td>없음(CAYW 창)</td>
+<td>없음</td>
+<td>있음(Handlebars)</td>
+</tr>
+<tr>
+<td>CAYW 선택창</td>
+<td>있음</td>
+<td>없음</td>
+<td>있음(pandoc/latex/formatted)</td>
+<td>없음</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>본문 내 인용 렌더링</td>
+<td>없음</td>
+<td><strong>있음</strong>(Live Preview·Reading, CSL 스타일, 번들 Pandoc 엔진)</td>
+<td>없음</td>
+<td>없음</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>인용 팝오버</td>
+<td>없음</td>
+<td>있음</td>
+<td>없음</td>
+<td>없음</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>References 사이드바</td>
+<td>있음(BBT bibliography 캐시, 열기 3종, 복사)</td>
+<td>있음(번호·CSL, 열기 3종, 출현 위치 이동)</td>
+<td>없음</td>
+<td><strong>있음</strong>(원조)</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>Cited-by</td>
+<td>명령형 볼트 스캔</td>
+<td>사이드바(파일별·횟수·정렬 6종)</td>
+<td>없음</td>
+<td>없음</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>위키링크 인용 <code>[[@key]]</code></td>
+<td>스캔·서제스트 지원</td>
+<td>옵션 "Wikilink citations"</td>
+<td>없음</td>
+<td>없음</td>
+<td>있음</td>
+</tr>
+<tr>
+<td>중복 citekey 처리</td>
+<td>ambiguous 상태로 거부</td>
+<td>삽입 거부 + Reference Error</td>
+<td>침묵</td>
+<td>침묵</td>
+<td>침묵</td>
+</tr>
+<tr>
+<td>참고문헌 삽입/복사</td>
+<td>삽입 명령 + 사이드바 복사(텍스트)</td>
+<td>사이드바 복사(리치+플레인)</td>
+<td>템플릿 <code>{{bibliography}}</code></td>
+<td>렌더 후 복사</td>
+<td>템플릿</td>
+</tr>
+<tr>
+<td>DOCX/HTML 내보내기</td>
+<td>없음</td>
+<td><strong>있음</strong>(번들 Pandoc, Lua 필터 생성)</td>
+<td>없음</td>
+<td>Pandoc 플러그인 조합</td>
+<td>없음</td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="4. 문헌노트와 템플릿" dir="auto">4. 문헌노트와 템플릿</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>CMDS Zotero 0.3.0</th>
+<th>ZotLit 2.1.4</th>
+<th>Zotero Integration</th>
+<th>Sync Client</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>템플릿 엔진</td>
+<td><strong>없음</strong>, 내장 레이아웃 + 설정(제목용 색상, 제외 태그)</td>
+<td>Liquid(<code>zt.*</code>), 옵션 Eta/JS, Template Data Explorer, <strong>Template Workbench</strong>(에이전트 편집)</td>
+<td>Nunjucks(<code>persist</code>, <code>filterby</code>, <code>format</code>, <code>lastImportDate</code>)</td>
+<td>Handlebars</td>
+</tr>
+<tr>
+<td>갱신 모델</td>
+<td><strong>섹션별 해시</strong> 관리 블록. 편집된 생성 섹션은 보존·보고, 사용자 영역 불변</td>
+<td><code>%%zt-managed%%</code> 영역 <strong>통째 재렌더</strong>, 영역 안 편집은 소실. metadata-only/overwrite 명령 별도</td>
+<td><code>persist</code> 블록 안만 보존, 주석 누적 문제</td>
+<td>생성 파일은 다음 동기화에 덮어씀(읽기 전용 미러)</td>
+</tr>
+<tr>
+<td>노트 식별</td>
+<td><code>zoteroID</code>(libraryID:itemKey) + citekey 히스토리로 이름 변경·키 변경 추적</td>
+<td><code>zotero-key</code> 프론트매터</td>
+<td>파일명 <code>@citekey</code></td>
+<td>파일명</td>
+</tr>
+<tr>
+<td>콜아웃 레이아웃</td>
+<td><code>[!Cite] [!Abstract] [!md] [!LINK] [!Highlight] [!Image] [!Note]</code> (기존 CMDS ZI 템플릿 파리티)</td>
+<td>기본 <code>note</code> 콜아웃, 사용자 정의</td>
+<td>사용자 템플릿</td>
+<td>사용자 템플릿</td>
+</tr>
+<tr>
+<td>관련 문헌</td>
+<td><code>dc:relation</code> → <code>[[@citekey]]</code></td>
+<td><code>zt.relatedItems</code></td>
+<td><code>relations</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Zotero 자식 노트</td>
+<td>본문 섹션에 텍스트 변환</td>
+<td><strong>별도 md 파일로 가져오기</strong>(2.1.4에서 외부 생성 노트도 지원), 색상 하이라이트 이모지 옵션</td>
+<td><code>markdownNotes</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>첨부 링크</td>
+<td>Zotero select + <code>file://</code></td>
+<td>Zotero backlink + <code>file://</code>(외부 파일 미복사)</td>
+<td><code>file://</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>파일명 템플릿</td>
+<td>고정 <code>@citekey.md</code> (이름 변경 후에도 추적)</td>
+<td>템플릿(citekey/DOI/title, <code>authors</code>, <code>authorsShort</code>, 충돌 시 접미사)</td>
+<td>출력 경로 템플릿</td>
+<td>템플릿</td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="5. 주석(어노테이션)" dir="auto">5. 주석(어노테이션)</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>CMDS Zotero 0.3.0</th>
+<th>ZotLit 2.1.4</th>
+<th>Zotero Integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>추출 원천</td>
+<td>BBT <code>item.attachments</code> → Zotero 네이티브 주석</td>
+<td>SQLite 네이티브 주석</td>
+<td>자체 PDF Utility로 PDF 파싱(Zotero DB 무관)</td>
+</tr>
+<tr>
+<td>이미지 주석</td>
+<td>해시명 복사, 변경 시 새 버전, 삭제 없음</td>
+<td>승인 후 볼트 복사, 차단 시 <code>file://</code></td>
+<td>사각형 → JPG 추출</td>
+</tr>
+<tr>
+<td>색상</td>
+<td>HSL 색조 기반 8색 매핑, <code>&lt;mark class="cmds-zotero-hl-*"&gt;</code></td>
+<td><code>colorName</code> 9색</td>
+<td><code>colorCategory</code></td>
+</tr>
+<tr>
+<td>사이드바</td>
+<td>있음: 활성 노트 따라가기/고정, 필터, 열기·삽입·링크·텍스트 복사</td>
+<td>있음: 노트/리더/고정 3모드, <strong>Zotero 리더 따라가기</strong>(서버 필요), 드래그 삽입, 검색·색·태그 필터</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>PDF 딥링크</td>
+<td><code>zotero://open-pdf/...?page&amp;annotation</code>, 1-based 페이지 검증</td>
+<td>backlink</td>
+<td>템플릿 수동</td>
+</tr>
+<tr>
+<td>페이지 라벨</td>
+<td>인쇄 라벨과 PDF 페이지 분리</td>
+<td><code>pageLabel</code>/<code>page</code></td>
+<td><code>pageLabel</code>/<code>page</code></td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="6. 갱신·배치·프로토콜" dir="auto">6. 갱신·배치·프로토콜</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>CMDS Zotero 0.3.0</th>
+<th>ZotLit 2.1.4</th>
+<th>Zotero Integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>단일 갱신</td>
+<td>미리보기 → 적용, CAS 충돌 감지</td>
+<td>update / metadata-only / overwrite</td>
+<td>재가져오기</td>
+</tr>
+<tr>
+<td>배치</td>
+<td>소유 노트 전체 갱신(충돌 건너뜀, 보고서)</td>
+<td>라이브러리·컬렉션 단위 생성/갱신, Zotero 우클릭·명령·프로토콜</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>인덱스</td>
+<td>버전형 JSON(schema 2), 진단, 이전 인덱스 보존, 실패 시 롤백</td>
+<td>DB 직접 읽기(인덱스 없음)</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>증분</td>
+<td>전체 재수집 + content hash</td>
+<td>Companion checkpoint + live push</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>프로토콜</td>
+<td>`obsidian://cmds-zotero?target=note</td>
+<td>pdf</td>
+<td>import`</td>
+</tr>
+<tr>
+<td>Zotero → Obsidian 진입점</td>
+<td>Hookmark 호환 Markdown 링크, 다른 볼트 note-map</td>
+<td>Companion 우클릭 메뉴, 노트 상태 컬럼, Database Status 패널</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>외부 API/CLI</td>
+<td><code>scripts/ingest.mjs</code>(connection/refresh/resolve/diagnostics)</td>
+<td>Template Workbench CLI 명령</td>
+<td>없음</td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="7. Zotero-side 애드온 (Obsidian 플러그인과 보완 관계)" dir="auto">7. Zotero-side 애드온 (Obsidian 플러그인과 보완 관계)</h2>
+<table>
+<thead>
+<tr>
+<th>애드온</th>
+<th>역할</th>
+<th>우리 워크플로우와의 관계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Better Notes</td>
+<td>Zotero 노트 ↔ Markdown <strong>양방향</strong> 동기화, Docx/마인드맵 내보내기</td>
+<td>유일한 양방향 후보. CMDS Zotero는 Zotero 읽기 전용이라 채택 안 함</td>
+</tr>
+<tr>
+<td>Actions &amp; Tags</td>
+<td>이벤트(항목/주석/노트 생성 등) 자동화</td>
+<td>Zotero 쪽 자동 태깅·파일링. 우리 인덱스 갱신 트리거로는 미연결</td>
+</tr>
+<tr>
+<td>Reading List</td>
+<td>읽음 상태 컬럼</td>
+<td>우리 인덱스에 상태 필드 없음(미채택)</td>
+</tr>
+<tr>
+<td>Attanger</td>
+<td>첨부 자동 이름변경·이동(ZotFile 후속)</td>
+<td>BBT citekey 비동기 갱신 디바운스 패턴 참고 가치</td>
+</tr>
+<tr>
+<td>ZotLit Companion</td>
+<td>WAL checkpoint, 우클릭 메뉴, live push</td>
+<td>ZotLit 전용</td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="8. CMDS Zotero 0.3.0의 위치 요약" dir="auto">8. CMDS Zotero 0.3.0의 위치 요약</h2>
+<p dir="auto"><strong>우리만 있는 것</strong>: 정규 아이덴티티 인덱스와 진단, 섹션별 해시 보존(편집 감지), citekey 히스토리로 이름·키 변경 추적, 다른 볼트 note-map 탐색, Hookmark 호환 링크, ingest CLI, 설치 이전·롤백 스크립트, Zotero·볼트 모두에 대한 보수적 쓰기 경계.</p>
+<p dir="auto"><strong>ZotLit에만 있는 것</strong>: 본문 인용 렌더링·팝오버, DOCX/HTML 내보내기, Zotero 리더 따라가기, 라이브러리·컬렉션 배치, 컴패니언 우클릭 진입, 템플릿 엔진과 Workbench, Zotero 종료 상태에서도 동작, 자식 노트 별도 파일 가져오기.</p>
+<p dir="auto"><strong>Zotero Integration만의 유산</strong>: Nunjucks <code>persist</code> 템플릿과 PDF Utility 이미지 추출. 유지보수 중단으로 대체 대상.</p>
+<p dir="auto"><strong>0.3.0에서 의도적으로 제외한 것</strong>: 템플릿 엔진, SQLite 직접 읽기, 컴패니언 애드온, HTTP 리스너·live update, 양방향 동기화, DOCX 내보내기, MCP 노출. 근거는 레포 <code>docs/plugin-landscape-2026-09.md</code>.</p>
+<p dir="auto"><strong>남은 실측</strong>: 0.3.0 서제스터·두 사이드바·일괄 갱신·v2 레이아웃 가져오기·0.2.0 노트 재가져오기(Zotero 실행 상태 필요). 그룹 라이브러리와 Hookmark 왕복은 0.2.0부터 미검증.</p>
+<h2 data-heading="출처" dir="auto">출처</h2>
+<ul>
+<li dir="auto">ZotLit 문서·체인지로그: <a rel="noopener nofollow" class="external-link" href="https://zotlit.aidenlx.site/changelog" target="_blank">https://zotlit.aidenlx.site/changelog</a> , /docs/concepts/how-zotlit-connects-to-zotero , /docs/reference/protocol-links , /blog/v2-release , /blog/v2.1-release</li>
+<li dir="auto">ZotLit 릴리스: <a rel="noopener nofollow" class="external-link" href="https://github.com/PKM-er/obsidian-zotlit/releases" target="_blank">https://github.com/PKM-er/obsidian-zotlit/releases</a></li>
+<li dir="auto">Zotero Integration: <a rel="noopener nofollow" class="external-link" href="https://github.com/mgmeyers/obsidian-zotero-integration" target="_blank">https://github.com/mgmeyers/obsidian-zotero-integration</a> (releases.atom)</li>
+<li dir="auto">Pandoc Reference List: <a rel="noopener nofollow" class="external-link" href="https://github.com/mgmeyers/obsidian-pandoc-reference-list" target="_blank">https://github.com/mgmeyers/obsidian-pandoc-reference-list</a></li>
+<li dir="auto">Zotero Bridge/Link: <a rel="noopener nofollow" class="external-link" href="https://github.com/vanakat/zotero-bridge" target="_blank">https://github.com/vanakat/zotero-bridge</a> , <a rel="noopener nofollow" class="external-link" href="https://github.com/vanakat/zotero-link" target="_blank">https://github.com/vanakat/zotero-link</a></li>
+<li dir="auto">Citations: <a rel="noopener nofollow" class="external-link" href="https://github.com/hans/obsidian-citation-plugin" target="_blank">https://github.com/hans/obsidian-citation-plugin</a></li>
+<li dir="auto">Zotero Sync Client: <a rel="noopener nofollow" class="external-link" href="https://github.com/frthjf/obsidian-zotero-sync-client" target="_blank">https://github.com/frthjf/obsidian-zotero-sync-client</a></li>
+<li dir="auto">Better Notes: <a rel="noopener nofollow" class="external-link" href="https://github.com/windingwind/zotero-better-notes" target="_blank">https://github.com/windingwind/zotero-better-notes</a> ; Actions &amp; Tags: <a rel="noopener nofollow" class="external-link" href="https://github.com/windingwind/zotero-actions-tags" target="_blank">https://github.com/windingwind/zotero-actions-tags</a> ; Attanger: <a rel="noopener nofollow" class="external-link" href="https://github.com/MuiseDestiny/zotero-attanger" target="_blank">https://github.com/MuiseDestiny/zotero-attanger</a> ; Reading List: <a rel="noopener nofollow" class="external-link" href="https://github.com/Dominic-DallOsto/zotero-reading-list" target="_blank">https://github.com/Dominic-DallOsto/zotero-reading-list</a></li>
+<li dir="auto">CMDS Zotero: <a rel="noopener nofollow" class="external-link" href="https://github.com/johnfkoo951/cmds-zotero" target="_blank">https://github.com/johnfkoo951/cmds-zotero</a> , 관련 기록 <a data-href="CMDS Zotero 0.2.0 구현·API 계약·두 볼트 이전" href="CMDS Zotero 0.2.0 구현·API 계약·두 볼트 이전" class="internal-link" target="_blank" rel="noopener nofollow">CMDS Zotero 0.2.0 구현·API 계약·두 볼트 이전</a>, <a data-href="CMDS Zotero 0.3.0 — 플러그인 생태계 리뷰와 기능 융합" href="CMDS Zotero 0.3.0 — 플러그인 생태계 리뷰와 기능 융합" class="internal-link" target="_blank" rel="noopener nofollow">CMDS Zotero 0.3.0 — 플러그인 생태계 리뷰와 기능 융합</a></li>
+</ul>
+<h2 data-heading="9. 판단: 직접 개발 vs 기존 플러그인 (2026-09-14 추가)" dir="auto">9. 판단: 직접 개발 vs 기존 플러그인 (2026-09-14 추가)</h2>
+<p dir="auto"><strong>결론: 역할 분담.</strong> 글쓰기·읽기 UX는 ZotLit, 에이전트·위키 인프라는 CMDS Zotero. Zotero Integration과 Pandoc Reference List는 아카이브 상태이므로 비활성화.</p>
+<table>
+<thead>
+<tr>
+<th>영역</th>
+<th>선택</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인용 삽입·본문 렌더링·팝오버·DOCX 내보내기·리더 따라가기·컬렉션 배치</td>
+<td><strong>ZotLit</strong></td>
+<td>우리가 만들지 않기로 한 기능. 활발한 유지보수(2026-07~09 릴리스 20회), Zotero 10 대응</td>
+</tr>
+<tr>
+<td><code>[@</code> 서제스터·References·Annotations 사이드바</td>
+<td>ZotLit 우선, CMDS는 폴백</td>
+<td>0.3.0에서 만든 부분 중 가장 겹치는 영역. 동시에 켜면 서제스터가 둘 다 뜨므로 CMDS 쪽 완성은 Off</td>
+</tr>
+<tr>
+<td>정규 아이덴티티 인덱스 JSON, <code>ingest.mjs</code> CLI, resolved/ambiguous/unavailable 구분</td>
+<td><strong>CMDS Zotero</strong></td>
+<td>paper-ingest 스킬과 Claude Code 에이전트가 읽는 계약. ZotLit은 사람용 UI</td>
+</tr>
+<tr>
+<td>문헌노트 보존 모델</td>
+<td><strong>CMDS Zotero</strong></td>
+<td>ZotLit은 관리영역 통째 교체(영역 안 편집 소실). CMDS는 섹션별 해시로 편집 감지·보존·보고. 에이전트가 노트를 만지는 위키에 필요</td>
+</tr>
+<tr>
+<td>두 볼트 note-map, 이름·citekey 변경 추적, Hookmark 링크</td>
+<td><strong>CMDS Zotero</strong></td>
+<td>ZotLit에 없음</td>
+</tr>
+<tr>
+<td>Zotero 연결 안정성</td>
+<td>CMDS 유리</td>
+<td>ZotLit v1은 네이티브 SQLite 바인딩이 Electron 업데이트마다 파손, v2는 DB 파일 직접 읽기+컴패니언. CMDS는 BBT RPC만 사용</td>
+</tr>
+<tr>
+<td>라이선스</td>
+<td>—</td>
+<td>ZotLit은 AGPL. 코드 차용 불가</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto"><strong>권고 순서</strong></p>
+<ol>
+<li dir="auto">메인 볼트에서 Zotero Integration 3.2.1, Pandoc Reference List 비활성화.</li>
+<li dir="auto">ZotLit을 글쓰기 주력으로 2주 사용. CMDS Zotero 설정 → Writing → Citekey completion = Off.</li>
+<li dir="auto">CMDS Zotero 0.4는 UI 확장 대신 인프라(인덱스·ingest·보존·두 볼트)에 집중. ZotLit 템플릿과 에이전트가 같은 인덱스를 읽게 하는 방향.</li>
+<li dir="auto">2주 후 판단: 위키 파이프라인·에이전트 연동을 계속 쓰면 플러그인 유지, 사람용 문헌노트만 남으면 CLI·스크립트 수준으로 축소.</li>
+</ol></article>
+</main>
+
+<footer class="cmds-meta">
+	<div class="cmds-badges"><span class="cmds-badge" id="expiryBadge" data-expires="1789320178065" data-lang="ko" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="expiryText"></span></span></div>
+	<a href="https://cmdspace.work" target="_blank" rel="noopener"><img src="https://cmdspace.work/assets/logos/cmds-logo-round.png" alt="CMDSPACE"></a>
+	<span>Shared via <a href="https://github.com/johnfkoo951/cmds-share" target="_blank" rel="noopener">CMDS Share</a></span>
+	<span class="cmds-theme-note">Theme: AnuPpuccin (Obsidian)</span>
+	<a class="cmds-author-link" href="https://cmdspace.work" target="_blank" rel="noopener">CMDSPACE</a>
+</footer>
+
+
+<script type="application/json" id="graph-data">{"title":"2026-09-13-Zotero-Obsidian-플러그인-최신버전-기능-비교","nodes":[{"label":"2026-09-13-Zotero-Obsidian-플러그인-최신버전-기능-비교","type":"note","level":0},{"label":"구요한","type":"note","level":1},{"label":"2026-09-13","type":"note","level":1},{"label":"#research","type":"tag","level":1},{"label":"#zotero","type":"tag","level":1},{"label":"#obsidian-plugin","type":"tag","level":1},{"label":"#agent-log","type":"tag","level":1},{"label":"CMDS Zotero 0.2.0 구현·API 계약·두 볼트 이전","type":"note","level":1},{"label":"CMDS Zotero 0.3.0 — 플러그인 생태계 리뷰와 기능 융합","type":"note","level":1},{"label":"🏷 People","type":"note","level":2},{"label":"가족 정보","type":"note","level":2},{"label":"🔖 YHN's CV","type":"note","level":2},{"label":"CEO-코칭-Coverage-List","type":"note","level":2},{"label":"2026-02-04-LG-AX-Camp-최종기획서","type":"note","level":2},{"label":"임원 대상 AI 교육 커리큘럼 개요서 v2.0","type":"note","level":2},{"label":"구요한, 커맨드스페이스 홍보 내용","type":"note","level":2},{"label":"CMDSPACE","type":"note","level":2},{"label":"바람빛교회","type":"note","level":2},{"label":"2026-09-12-구요한-MBTI-Step-II-분석","type":"note","level":2},{"label":"형혜지","type":"note","level":2},{"label":"20260630_평창동 이어령 가옥 임대차 계약 체결.meeting","type":"note","level":2},{"label":"HUBS창업&커리어센터","type":"note","level":2},{"label":"커맨드스페이스","type":"note","level":2},{"label":"📜 내 이름은 구요한이다 - 갖추고 빛내고 기록하는 부르심","type":"note","level":2},{"label":"紙散(지산) - 호의 의미와 해석","type":"note","level":2},{"label":"🏷 Daily Notes","type":"note","level":2},{"label":"2026-09-12","type":"note","level":2},{"label":"2026-09-13-CMDS-Achmage-인라인-패널-내-이미지-작업-완결-(R-040)","type":"note","level":2},{"label":"2026-09-13-CMDS-Achmage-Edit-note-모드-앵커-기반-결정론적-Apply-(R-041)","type":"note","level":2},{"label":"2026-09-13-Obsidian-플러그인-체크아웃에-낡은-tracked-main.js가-남아-테마-추종이-안-되던-문제","type":"note","level":2},{"label":"2026-09-13-옵시디언-플러그인-설정-탭이-클릭-불가로-죽음-React-컨텍스트-부재-+-aria-label-툴팁-+-1.14-별도-설정-창","type":"note","level":2},{"label":"01-독서와-지식지도","type":"note","level":2},{"label":"2026-09-13-행사-자료의-독립-독서-지식자산-승격","type":"note","level":2},{"label":"2026-09-13-독서-기록의-공개-편집과-발행-스킬","type":"note","level":2},{"label":"2026-09-13-CMDS-Zotero-0.3.0-—-플러그인-생태계-리뷰와-기능-융합","type":"note","level":2},{"label":"2026-09-13-local-bible-research-and-setup","type":"note","level":2},{"label":"2026-09-13-db-hosting-options-research-report","type":"note","level":2},{"label":"누가복음 I. 모든 사람을 위한 환대의 기쁜 소식","type":"note","level":2},{"label":"2026-09-13-insight","type":"note","level":2},{"label":"제국과 천국","type":"note","level":2},{"label":"첫 번째 크리스마스","type":"note","level":2},{"label":"톰 라이트의 그리스도의 길","type":"note","level":2}],"edges":[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[1,9],[1,10],[1,11],[1,12],[1,13],[1,14],[1,15],[1,16],[1,17],[1,18],[1,19],[1,20],[1,21],[1,22],[1,23],[1,24],[2,1],[2,25],[2,26],[2,27],[2,28],[2,29],[2,30],[2,31],[2,32],[2,33],[2,34],[2,35],[2,36],[2,37],[2,38],[2,39],[2,40],[2,41]]}</script>
+<script type="text/plain" id="md-source">CiMgWm90ZXJvIOKGlCBPYnNpZGlhbiDtlIzrn6zqt7jsnbgg7LWc7IugIOuyhOyghCDquLDriqUg67mE6rWQICgyMDI2LTA5LTEzKQoK7KGw7IKsIOq4sOykgOydvCAyMDI2LTA5LTEzLiDqs7Xsi50g66y47IScwrdHaXRIdWIg66a066as7IqkwrfssrTsnbjsp4DroZzqt7jrpbwg7J296rOgIOygleumrO2WiOycvOupsCDsvZTrk5zripQg67O17IKs7ZWY7KeAIOyViuyVmOuLpC4gQ01EUyBab3Rlcm/ripQg7JuM7YGs7Yq466asIOu4jOuenOy5mCBgd29ya3RyZWUtZmVhdHVyZS1wYXJpdHktMC4zYOydmCAwLjMuMCjrr7jrs5HtlaksIOychO2CpCDrs7ztirgg7ISk7LmY67O4KSDquLDspIDsnbTri6QuIOyLpOy4oe2VmOyngCDslYrsnYAg7ZWt66qp7J2AICLrrLjshJwg6riw7KSAIuycvOuhnCDtkZzsi5ztlojri6QuCgojIyAxLiDrjIDsg4Hqs7wg7LWc7IugIOuyhOyghAoKfCDtlIzrn6zqt7jsnbggfCDstZzsi6Ag67KE7KCEIHwg66a066as7Iqk7J28IHwg7Jyg7KeA67O07IiYIHwg66mU7J24IOuzvO2KuCDshKTsuZggfAp8IC0tLSB8IC0tLSB8IC0tLSB8IC0tLSB8IC0tLSB8CnwgKipDTURTIFpvdGVybyoqICjsnpDssrQpIHwgMC4zLjAgZGV2IHwgMjAyNi0wOS0xMyB8IOqwnOuwnCDspJEgfCAwLjIuMCAo7JyE7YKkIOuzvO2KuCAwLjMuMCkgfAp8ICoqWm90TGl0KiogKGFpZGVubHgpIHwgMi4xLjQgfCAyMDI2LTA5LTExIHwg7Zmc67CcLiAyMDI2LTA3fjA5IHYyIOumrOudvOydtO2KuCwgQUdQTCB8IDIuMS40IHwKfCAqKlpvdGVybyBJbnRlZ3JhdGlvbioqIChtZ21leWVycykgfCAzLjIuMSB8IDIwMjQtMDgtMTEgfCDsu6TrrqTri4jti7Ag7JWE7Lm07J2067iMLCAy64WEIOustOumtOumrOyKpCB8IDMuMi4xIHwKfCAqKlBhbmRvYyBSZWZlcmVuY2UgTGlzdCoqIChtZ21leWVycykgfCAyLjAuMjUgfCDslYTsubTsnbTruIwgfCDsu6TrrqTri4jti7Ag7JWE7Lm07J2067iMIHwgMi4wLjI1IHwKfCAqKlpvdGVybyBCcmlkZ2UgLyBab3Rlcm8gTGluayoqICh2YW5ha2F0KSB8IDEuNi54IHwgMjAyNCB8IOyggO2ZnOuPmSB8IEJyaWRnZSAxLjYuMTAg67mE7Zmc7ISxIHwKfCAqKkNpdGF0aW9ucyoqIChoYW5zKSB8IDAuMS4zIHwg7KCV7LK0IHwg7Y+s7YGs66eMIOycoOyngCB8IOyXhuydjCB8CnwgKipab3Rlcm8gU3luYyBDbGllbnQqKiAoZnJ0aGpmKSB8IDEuNC4wIHwgMjAyNi0wNyB8IO2ZnOuwnCB8IOyXhuydjCB8CnwgKipab3Rlcm8gQmV0dGVyIE5vdGVzKiogKFpvdGVyby1zaWRlKSB8IO2ZnOuwnCB8IDIwMjV+IHwg7Zmc67CcIHwg7ZW064u5IOyXhuydjCB8CnwgKipBY3Rpb25zICYgVGFncyAvIFJlYWRpbmcgTGlzdCAvIEF0dGFuZ2VyKiogKFpvdGVyby1zaWRlKSB8IO2ZnOuwnCB8IDIwMjV+MjAyNiB8IO2ZnOuwnCwgWm90ZXJvIDh+MTAg64yA7J2RIHwg7ZW064u5IOyXhuydjCB8CgojIyAyLiDsl7DqsrAg67Cp7Iud6rO8IOyghOygnAoKfCDtla3rqqkgfCBDTURTIFpvdGVybyAwLjMuMCB8IFpvdExpdCAyLjEuNCB8IFpvdGVybyBJbnRlZ3JhdGlvbiAzLjIuMSB8IFBhbmRvYyBSZWYgTGlzdCB8IEJyaWRnZS9MaW5rIHwgU3luYyBDbGllbnQgfAp8IC0tLSB8IC0tLSB8IC0tLSB8IC0tLSB8IC0tLSB8IC0tLSB8IC0tLSB8Cnwg642w7J207YSwIOqyveuhnCB8IEJCVCBKU09OLVJQQyAoYGl0ZW0uc2VhcmNoL2V4cG9ydC9hdHRhY2htZW50cy9iaWJsaW9ncmFwaHlgKSArIENBWVcgfCBab3Rlcm8gKipTUUxpdGUg7KeB7KCRIOydveq4sCoqKHJlZmxpbmsvaW1tdXRhYmxlL2Z1bGwgY29weSkgKyAqKlpvdExpdCBDb21wYW5pb24qKiDslaDrk5zsmKjsnbQgV0FMIGNoZWNrcG9pbnQgfCBCQlQgQ0FZVyArIOyekOyytCAqKlBERiBVdGlsaXR5Kiog67CU7J2064SI66as66GcIOyjvOyEnSDstpTstpwgfCBgLmJpYmAg64K067O064K06riwICsg7Jm467aAIFBhbmRvYyB8IFpvdGVybyAqKmxvY2FsIEFQSSoqKDcrKSDrmJDripQgWm90U2VydmVyIHwgWm90ZXJvICoqV2ViIEFQSSoqIOuYkOuKlCBsb2NhbCBBUEksIOydveq4sCDsoITsmqkg66+465+sIHwKfCBCQlQg7ZWE7JqUIHwg7ZWE7IiYIHwg67aI7ZWE7JqUKOq2jOyepSkgfCDtlYTsiJggfCBCQlQg7J6Q64+ZIGV4cG9ydCDqtozsnqUgfCDrtojtlYTsmpQgfCDrtojtlYTsmpQgfAp8IFpvdGVybyDsi6Ttlokg7ZWE7JqUIHwg7ZWE7JqUIHwg67aI7ZWE7JqUKERCIO2MjOydvOunjCkgfCDtlYTsmpQgfCDrtojtlYTsmpQgfCDtlYTsmpQgfCDtgbTrnbzsmrDrk5wg66qo65OcIOu2iO2VhOyalCB8CnwgWm90ZXJvIOyTsOq4sCB8IOyXhuydjCB8IOyXhuydjCjsu7TtjKjri4jslrjsnYAgY2hlY2twb2ludMK366mU64m066eMKSB8IOyXhuydjCB8IOyXhuydjCB8IOyXhuydjCB8IOyXhuydjCB8Cnwg7J6Q7LK0IEhUVFAg7ISc67KEIHwg7JeG7J2MIHwg7ISg7YOdKDkwOTEsIGxpdmUgdXBkYXRl7JqpKSB8IOyXhuydjCB8IOyXhuydjCB8IEJyaWRnZeqwgCBBUEkg64W47LacIHwg7JeG7J2MIHwKfCBab3Rlcm8gMTAgfCBCQlQg6rOE7JW9IOq4sOykgCg5LjAuNiDsi6TsuKEpIHwg7KeA7JuQKDIuMS4wKykgfCDsu6TrrqTri4jti7Ag7ZmV7J2466eMIHwg66y06rSAIHwg66+47ZmV7J24IHwg66y06rSAIHwKfCDslYTsnbTrjbTti7Dti7AgfCBsaWJyYXJ5SUQraXRlbUtleSDsoJXqt5wg7Iud67OELCBjaXRla2V5IO2eiOyKpO2GoOumrCB8IFpvdGVybyDtla3rqqkgSUQgKyBgc291cmNlLWlkYCjshKTsuZjrs7gg7ZW07IucKSB8IGNpdGVrZXkgfCBjaXRla2V5IHwgWm90ZXJvIO2CpCB8IFpvdGVybyDtgqQgfAoKIyMgMy4g7J247JqpIOyekeyEsQoKfCDtla3rqqkgfCBDTURTIFpvdGVybyAwLjMuMCB8IFpvdExpdCAyLjEuNCB8IFpvdGVybyBJbnRlZ3JhdGlvbiB8IFBhbmRvYyBSZWYgTGlzdCB8IENpdGF0aW9ucyB8CnwgLS0tIHwgLS0tIHwgLS0tIHwgLS0tIHwgLS0tIHwgLS0tIHwKfCDsnbjrnbzsnbgg7ISc7KCc7Iqk7YSwIHwgYFtAYCAo7Ji17IWYIGJhcmUgYEBgKSwg66Gc7LusIOyduOuNseyKpCwgU2hpZnQrRW50ZXIgYmFyZSDtgqQgfCBgW0BgL2DjgJBAYC/smLXshZggYEBgLCDsoIQg65287J2067iM65+s66asIOyKpOy9lO2UhCDthrXtlakg6rKA7IOJLCBTaGlmdCtFbnRlciDrjIDssrQg7Y+s66e3IHwg7JeG7J2MKENBWVcg7LC9KSB8IOyXhuydjCB8IOyeiOydjChIYW5kbGViYXJzKSB8CnwgQ0FZVyDshKDtg53ssL0gfCDsnojsnYwgfCDsl4bsnYwgfCDsnojsnYwocGFuZG9jL2xhdGV4L2Zvcm1hdHRlZCkgfCDsl4bsnYwgfCDsl4bsnYwgfAp8IOuzuOusuCDrgrQg7J247JqpIOugjOuNlOungSB8IOyXhuydjCB8ICoq7J6I7J2MKiooTGl2ZSBQcmV2aWV3wrdSZWFkaW5nLCBDU0wg7Iqk7YOA7J28LCDrsojrk6QgUGFuZG9jIOyXlOynhCkgfCDsl4bsnYwgfCDsl4bsnYwgfCDsl4bsnYwgfAp8IOyduOyaqSDtjJ3smKTrsoQgfCDsl4bsnYwgfCDsnojsnYwgfCDsl4bsnYwgfCDsl4bsnYwgfCDsl4bsnYwgfAp8IFJlZmVyZW5jZXMg7IKs7J2065Oc67CUIHwg7J6I7J2MKEJCVCBiaWJsaW9ncmFwaHkg7LqQ7IucLCDsl7TquLAgM+yihSwg67O17IKsKSB8IOyeiOydjCjrsojtmLjCt0NTTCwg7Je06riwIDPsooUsIOy2nO2YhCDsnITsuZgg7J2064+ZKSB8IOyXhuydjCB8ICoq7J6I7J2MKioo7JuQ7KGwKSB8IOyXhuydjCB8CnwgQ2l0ZWQtYnkgfCDrqoXroLntmJUg67O87Yq4IOyKpOy6lCB8IOyCrOydtOuTnOuwlCjtjIzsnbzrs4TCt+2an+yImMK37KCV66CsIDbsooUpIHwg7JeG7J2MIHwg7JeG7J2MIHwg7JeG7J2MIHwKfCDsnITtgqTrp4Htgawg7J247JqpIGBbW0BrZXldXWAgfCDsiqTsupTCt+yEnOygnOyKpO2KuCDsp4Dsm5AgfCDsmLXshZggIldpa2lsaW5rIGNpdGF0aW9ucyIgfCDsl4bsnYwgfCDsl4bsnYwgfCDsnojsnYwgfAp8IOykkeuztSBjaXRla2V5IOyymOumrCB8IGFtYmlndW91cyDsg4Htg5zroZwg6rGw67aAIHwg7IK97J6FIOqxsOu2gCArIFJlZmVyZW5jZSBFcnJvciB8IOy5qOustSB8IOy5qOustSB8IOy5qOustSB8Cnwg7LC46rOg66y47ZeMIOyCveyehS/rs7XsgqwgfCDsgr3snoUg66qF66C5ICsg7IKs7J2065Oc67CUIOuzteyCrCjthY3siqTtirgpIHwg7IKs7J2065Oc67CUIOuzteyCrCjrpqzsuZgr7ZSM66CI7J24KSB8IO2FnO2UjOumvyBge3tiaWJsaW9ncmFwaHl9fWAgfCDroIzrjZQg7ZuEIOuzteyCrCB8IO2FnO2UjOumvyB8CnwgRE9DWC9IVE1MIOuCtOuztOuCtOq4sCB8IOyXhuydjCB8ICoq7J6I7J2MKioo67KI65OkIFBhbmRvYywgTHVhIO2VhO2EsCDsg53shLEpIHwg7JeG7J2MIHwgUGFuZG9jIO2UjOufrOq3uOyduCDsobDtlakgfCDsl4bsnYwgfAoKIyMgNC4g66y47ZeM64W47Yq47JmAIO2FnO2UjOumvwoKfCDtla3rqqkgICAgICAgICAgIHwgQ01EUyBab3Rlcm8gMC4zLjAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBab3RMaXQgMi4xLjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgWm90ZXJvIEludGVncmF0aW9uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBTeW5jIENsaWVudCAgICAgICAgICAgICAgICAgIHwKfCAtLS0tLS0tLS0tLS0gfCAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB8IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gfCAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB8IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gfAp8IO2FnO2UjOumvyDsl5Tsp4QgICAgICAgfCAqKuyXhuydjCoqLCDrgrTsnqUg66CI7J207JWE7JuDICsg7ISk7KCVKOygnOuqqeyaqSDsg4nsg4EsIOygnOyZuCDtg5zqt7gpICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgTGlxdWlkKGB6dC4qYCksIOyYteyFmCBFdGEvSlMsIFRlbXBsYXRlIERhdGEgRXhwbG9yZXIsICoqVGVtcGxhdGUgV29ya2JlbmNoKioo7JeQ7J207KCE7Yq4IO2OuOynkSkgfCBOdW5qdWNrcyhgcGVyc2lzdGAsIGBmaWx0ZXJieWAsIGBmb3JtYXRgLCBgbGFzdEltcG9ydERhdGVgKSB8IEhhbmRsZWJhcnMgICAgICAgICAgICAgICAgICAgfAp8IOqwseyLoCDrqqjrjbggICAgICAgIHwgKirshLnshZjrs4Qg7ZW07IucKiog6rSA66asIOu4lOuhnS4g7Y647KeR65CcIOyDneyEsSDshLnshZjsnYAg67O07KG0wrfrs7Tqs6AsIOyCrOyaqeyekCDsmIHsl60g67aI67OAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBgJSV6dC1tYW5hZ2VkJSVgIOyYgeyXrSAqKu2GteynuCDsnqzroIzrjZQqKiwg7JiB7JetIOyViCDtjrjsp5HsnYAg7IaM7IukLiBtZXRhZGF0YS1vbmx5L292ZXJ3cml0ZSDrqoXroLkg67OE64+EICAgICAgICAgfCBgcGVyc2lzdGAg67iU66GdIOyViOunjCDrs7TsobQsIOyjvOyEnSDriITsoIEg66y47KCcICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IOyDneyEsSDtjIzsnbzsnYAg64uk7J2MIOuPmeq4sO2ZlOyXkCDrja7slrTslIAo7J296riwIOyghOyaqSDrr7jrn6wpIHwKfCDrhbjtirgg7Iud67OEICAgICAgICB8IGB6b3Rlcm9JRGAobGlicmFyeUlEOml0ZW1LZXkpICsgY2l0ZWtleSDtnojsiqTthqDrpqzroZwg7J2066aEIOuzgOqyvcK37YKkIOuzgOqyvSDstpTsoIEgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBgem90ZXJvLWtleWAg7ZSE66Gg7Yq466ek7YSwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IO2MjOydvOuqhSBgQGNpdGVrZXlgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg7YyM7J2866qFICAgICAgICAgICAgICAgICAgICAgICAgICB8Cnwg7L2c7JWE7JuDIOugiOydtOyVhOybgyAgICAgfCBgWyFDaXRlXSBbIUFic3RyYWN0XSBbIW1kXSBbIUxJTktdIFshSGlnaGxpZ2h0XSBbIUltYWdlXSBbIU5vdGVdYCAo6riw7KG0IENNRFMgWkkg7YWc7ZSM66a/IO2MjOumrO2LsCkgfCDquLDrs7ggYG5vdGVgIOy9nOyVhOybgywg7IKs7Jqp7J6QIOygleydmCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCDsgqzsmqnsnpAg7YWc7ZSM66a/ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IOyCrOyaqeyekCDthZztlIzrpr8gICAgICAgICAgICAgICAgICAgICAgfAp8IOq0gOugqCDrrLjtl4wgICAgICAgIHwgYGRjOnJlbGF0aW9uYCDihpIgYFtbQGNpdGVrZXldXWAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IGB6dC5yZWxhdGVkSXRlbXNgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBgcmVsYXRpb25zYCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IOKAlCAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgWm90ZXJvIOyekOyLnSDrhbjtirggfCDrs7jrrLgg7IS57IWY7JeQIO2FjeyKpO2KuCDrs4DtmZggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgKirrs4Trj4QgbWQg7YyM7J2866GcIOqwgOyguOyYpOq4sCoqKDIuMS407JeQ7IScIOyZuOu2gCDsg53shLEg64W47Yq464+EIOyngOybkCksIOyDieyDgSDtlZjsnbTrnbzsnbTtirgg7J2066qo7KeAIOyYteyFmCAgICAgICAgICAgICAgICAgICAgICAgICAgfCBgbWFya2Rvd25Ob3Rlc2AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IOKAlCAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cnwg7LKo67aAIOunge2BrCAgICAgICAgfCBab3Rlcm8gc2VsZWN0ICsgYGZpbGU6Ly9gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IFpvdGVybyBiYWNrbGluayArIGBmaWxlOi8vYCjsmbjrtoAg7YyM7J28IOuvuOuzteyCrCkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IGBmaWxlOi8vYCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg4oCUICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCDtjIzsnbzrqoUg7YWc7ZSM66a/ICAgICAgfCDqs6DsoJUgYEBjaXRla2V5Lm1kYCAo7J2066aEIOuzgOqyvSDtm4Tsl5Drj4Qg7LaU7KCBKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCDthZztlIzrpr8oY2l0ZWtleS9ET0kvdGl0bGUsIGBhdXRob3JzYCwgYGF1dGhvcnNTaG9ydGAsIOy2qeuPjCDsi5wg7KCR66+47IKsKSAgICAgICAgICAgICAgICAgICAgICAgIHwg7Lac66ClIOqyveuhnCDthZztlIzrpr8gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IO2FnO2UjOumvyAgICAgICAgICAgICAgICAgICAgICAgICAgfAoKIyMgNS4g7KO87ISdKOyWtOuFuO2FjOydtOyFmCkKCnwg7ZWt66qpIHwgQ01EUyBab3Rlcm8gMC4zLjAgfCBab3RMaXQgMi4xLjQgfCBab3Rlcm8gSW50ZWdyYXRpb24gfAp8IC0tLSB8IC0tLSB8IC0tLSB8IC0tLSB8Cnwg7LaU7LacIOybkOyynCB8IEJCVCBgaXRlbS5hdHRhY2htZW50c2Ag4oaSIFpvdGVybyDrhKTsnbTti7DruIwg7KO87ISdIHwgU1FMaXRlIOuEpOydtO2LsOu4jCDso7zshJ0gfCDsnpDssrQgUERGIFV0aWxpdHnroZwgUERGIO2MjOyLsShab3Rlcm8gREIg66y06rSAKSB8Cnwg7J2066+47KeAIOyjvOyEnSB8IO2VtOyLnOuqhSDrs7XsgqwsIOuzgOqyvSDsi5wg7IOIIOuyhOyghCwg7IKt7KCcIOyXhuydjCB8IOyKueyduCDtm4Qg67O87Yq4IOuzteyCrCwg7LCo64uoIOyLnCBgZmlsZTovL2AgfCDsgqzqsIHtmJUg4oaSIEpQRyDstpTstpwgfAp8IOyDieyDgSB8IEhTTCDsg4nsobAg6riw67CYIDjsg4kg66ek7ZWRLCBgPG1hcmsgY2xhc3M9ImNtZHMtem90ZXJvLWhsLSoiPmAgfCBgY29sb3JOYW1lYCA57IOJIHwgYGNvbG9yQ2F0ZWdvcnlgIHwKfCDsgqzsnbTrk5zrsJQgfCDsnojsnYw6IO2ZnOyEsSDrhbjtirgg65Sw65286rCA6riwL+qzoOyglSwg7ZWE7YSwLCDsl7TquLDCt+yCveyehcK366eB7YGswrfthY3siqTtirgg67O17IKsIHwg7J6I7J2MOiDrhbjtirgv66as642UL+qzoOyglSAz66qo65OcLCAqKlpvdGVybyDrpqzrjZQg65Sw65286rCA6riwKioo7ISc67KEIO2VhOyalCksIOuTnOuemOq3uCDsgr3snoUsIOqygOyDicK37IOJwrftg5zqt7gg7ZWE7YSwIHwg7JeG7J2MIHwKfCBQREYg65Sl66eB7YGsIHwgYHpvdGVybzovL29wZW4tcGRmLy4uLj9wYWdlJmFubm90YXRpb25gLCAxLWJhc2VkIO2OmOydtOyngCDqsoDspp0gfCBiYWNrbGluayB8IO2FnO2UjOumvyDsiJjrj5kgfAp8IO2OmOydtOyngCDrnbzrsqggfCDsnbjsh4Qg652867Ko6rO8IFBERiDtjpjsnbTsp4Ag67aE66asIHwgYHBhZ2VMYWJlbGAvYHBhZ2VgIHwgYHBhZ2VMYWJlbGAvYHBhZ2VgIHwKCiMjIDYuIOqwseyLoMK367Cw7LmYwrftlITroZzthqDsvZwKCnwg7ZWt66qpIHwgQ01EUyBab3Rlcm8gMC4zLjAgfCBab3RMaXQgMi4xLjQgfCBab3Rlcm8gSW50ZWdyYXRpb24gfAp8IC0tLSB8IC0tLSB8IC0tLSB8IC0tLSB8Cnwg64uo7J28IOqwseyLoCB8IOuvuOumrOuztOq4sCDihpIg7KCB7JqpLCBDQVMg7Lap64+MIOqwkOyngCB8IHVwZGF0ZSAvIG1ldGFkYXRhLW9ubHkgLyBvdmVyd3JpdGUgfCDsnqzqsIDsoLjsmKTquLAgfAp8IOuwsOy5mCB8IOyGjOycoCDrhbjtirgg7KCE7LK0IOqwseyLoCjstqnrj4wg6rG064SI65yALCDrs7Tqs6DshJwpIHwg65287J2067iM65+s66aswrfsu6zroInshZgg64uo7JyEIOyDneyEsS/qsLHsi6AsIFpvdGVybyDsmrDtgbTrpq3Ct+uqheugucK37ZSE66Gc7Yag7L2cIHwg7JeG7J2MIHwKfCDsnbjrjbHsiqQgfCDrsoTsoITtmJUgSlNPTihzY2hlbWEgMiksIOynhOuLqCwg7J207KCEIOyduOuNseyKpCDrs7TsobQsIOyLpO2MqCDsi5wg66Gk67CxIHwgREIg7KeB7KCRIOydveq4sCjsnbjrjbHsiqQg7JeG7J2MKSB8IOyXhuydjCB8Cnwg7Kad67aEIHwg7KCE7LK0IOyerOyImOynkSArIGNvbnRlbnQgaGFzaCB8IENvbXBhbmlvbiBjaGVja3BvaW50ICsgbGl2ZSBwdXNoIHwg7JeG7J2MIHwKfCDtlITroZzthqDsvZwgfCBgb2JzaWRpYW46Ly9jbWRzLXpvdGVybz90YXJnZXQ9bm90ZXxwZGZ8aW1wb3J0YCB8IGBvYnNpZGlhbjovL3pvdGxpdC97b3Blbix1cGRhdGUsdXBkYXRlLW1hbnksaW1wb3J0LW5vdGUocyksdXBkYXRlLWFsbCxpbXBvcnQtYWxsLW5vdGVzLGV4cGxvcmV9YCArIGBzb3VyY2UtaWRgIHwgYG9ic2lkaWFuOi8vem90ZXJvLS4uLmAo6rCA7KC47Jik6riwIO2KuOumrOqxsCkgfAp8IFpvdGVybyDihpIgT2JzaWRpYW4g7KeE7J6F7KCQIHwgSG9va21hcmsg7Zi47ZmYIE1hcmtkb3duIOunge2BrCwg64uk66W4IOuzvO2KuCBub3RlLW1hcCB8IENvbXBhbmlvbiDsmrDtgbTrpq0g66mU64m0LCDrhbjtirgg7IOB7YOcIOy7rOufvCwgRGF0YWJhc2UgU3RhdHVzIO2MqOuEkCB8IOyXhuydjCB8Cnwg7Jm467aAIEFQSS9DTEkgfCBgc2NyaXB0cy9pbmdlc3QubWpzYChjb25uZWN0aW9uL3JlZnJlc2gvcmVzb2x2ZS9kaWFnbm9zdGljcykgfCBUZW1wbGF0ZSBXb3JrYmVuY2ggQ0xJIOuqheuguSB8IOyXhuydjCB8CgojIyA3LiBab3Rlcm8tc2lkZSDslaDrk5zsmKggKE9ic2lkaWFuIO2UjOufrOq3uOyduOqzvCDrs7TsmYQg6rSA6rOEKQoKfCDslaDrk5zsmKggfCDsl63tlaAgfCDsmrDrpqwg7JuM7YGs7ZSM66Gc7Jqw7JmA7J2YIOq0gOqzhCB8CnwgLS0tIHwgLS0tIHwgLS0tIHwKfCBCZXR0ZXIgTm90ZXMgfCBab3Rlcm8g64W47Yq4IOKGlCBNYXJrZG93biAqKuyWkeuwqe2WpSoqIOuPmeq4sO2ZlCwgRG9jeC/rp4jsnbjrk5zrp7Ug64K067O064K06riwIHwg7Jyg7J287ZWcIOyWkeuwqe2WpSDtm4Trs7QuIENNRFMgWm90ZXJv64qUIFpvdGVybyDsnb3quLAg7KCE7Jqp7J206528IOyxhO2DnSDslYgg7ZWoIHwKfCBBY3Rpb25zICYgVGFncyB8IOydtOuypO2KuCjtla3rqqkv7KO87ISdL+uFuO2KuCDsg53shLEg65OxKSDsnpDrj5ntmZQgfCBab3Rlcm8g7Kq9IOyekOuPmSDtg5zquYXCt+2MjOydvOungS4g7Jqw66asIOyduOuNseyKpCDqsLHsi6Ag7Yq466as6rGw66Gc64qUIOuvuOyXsOqysCB8CnwgUmVhZGluZyBMaXN0IHwg7J297J2MIOyDge2DnCDsu6zrn7wgfCDsmrDrpqwg7J24642x7Iqk7JeQIOyDge2DnCDtlYTrk5wg7JeG7J2MKOuvuOyxhO2DnSkgfAp8IEF0dGFuZ2VyIHwg7LKo67aAIOyekOuPmSDsnbTrpoTrs4Dqsr3Ct+ydtOuPmShab3RGaWxlIO2bhOyGjSkgfCBCQlQgY2l0ZWtleSDruYTrj5nquLAg6rCx7IugIOuUlOuwlOyatOyKpCDtjKjthLQg7LC46rOgIOqwgOy5mCB8CnwgWm90TGl0IENvbXBhbmlvbiB8IFdBTCBjaGVja3BvaW50LCDsmrDtgbTrpq0g66mU64m0LCBsaXZlIHB1c2ggfCBab3RMaXQg7KCE7JqpIHwKCiMjIDguIENNRFMgWm90ZXJvIDAuMy4w7J2YIOychOy5mCDsmpTslb0KCioq7Jqw66as66eMIOyeiOuKlCDqsoMqKjog7KCV6recIOyVhOydtOuNtO2LsO2LsCDsnbjrjbHsiqTsmYAg7KeE64uoLCDshLnshZjrs4Qg7ZW07IucIOuztOyhtCjtjrjsp5Eg6rCQ7KeAKSwgY2l0ZWtleSDtnojsiqTthqDrpqzroZwg7J2066aEwrftgqQg67OA6rK9IOy2lOyggSwg64uk66W4IOuzvO2KuCBub3RlLW1hcCDtg5Dsg4ksIEhvb2ttYXJrIO2YuO2ZmCDrp4HtgawsIGluZ2VzdCBDTEksIOyEpOy5mCDsnbTsoITCt+uhpOuwsSDsiqTtgazrpr3tirgsIFpvdGVyb8K367O87Yq4IOuqqOuRkOyXkCDrjIDtlZwg67O07IiY7KCBIOyTsOq4sCDqsr3qs4QuCgoqKlpvdExpdOyXkOunjCDsnojripQg6rKDKio6IOuzuOusuCDsnbjsmqkg66CM642U66eBwrftjJ3smKTrsoQsIERPQ1gvSFRNTCDrgrTrs7TrgrTquLAsIFpvdGVybyDrpqzrjZQg65Sw65286rCA6riwLCDrnbzsnbTruIzrn6zrpqzCt+y7rOugieyFmCDrsLDsuZgsIOy7tO2MqOuLiOyWuCDsmrDtgbTrpq0g7KeE7J6FLCDthZztlIzrpr8g7JeU7KeE6rO8IFdvcmtiZW5jaCwgWm90ZXJvIOyiheujjCDsg4Htg5zsl5DshJzrj4Qg64+Z7J6RLCDsnpDsi50g64W47Yq4IOuzhOuPhCDtjIzsnbwg6rCA7KC47Jik6riwLgoKKipab3Rlcm8gSW50ZWdyYXRpb27rp4zsnZgg7Jyg7IKwKio6IE51bmp1Y2tzIGBwZXJzaXN0YCDthZztlIzrpr/qs7wgUERGIFV0aWxpdHkg7J2066+47KeAIOy2lOy2nC4g7Jyg7KeA67O07IiYIOykkeuLqOycvOuhnCDrjIDssrQg64yA7IOBLgoKKiowLjMuMOyXkOyEnCDsnZjrj4TsoIHsnLzroZwg7KCc7Jm47ZWcIOqygyoqOiDthZztlIzrpr8g7JeU7KeELCBTUUxpdGUg7KeB7KCRIOydveq4sCwg7Lu07Yyo64uI7Ja4IOyVoOuTnOyYqCwgSFRUUCDrpqzsiqTrhIjCt2xpdmUgdXBkYXRlLCDslpHrsKntlqUg64+Z6riw7ZmULCBET0NYIOuCtOuztOuCtOq4sCwgTUNQIOuFuOy2nC4g6re86rGw64qUIOugiO2PrCBgZG9jcy9wbHVnaW4tbGFuZHNjYXBlLTIwMjYtMDkubWRgLgoKKirrgqjsnYAg7Iuk7LihKio6IDAuMy4wIOyEnOygnOyKpO2EsMK365GQIOyCrOydtOuTnOuwlMK37J286rSEIOqwseyLoMK3djIg66CI7J207JWE7JuDIOqwgOyguOyYpOq4sMK3MC4yLjAg64W47Yq4IOyerOqwgOyguOyYpOq4sChab3Rlcm8g7Iuk7ZaJIOyDge2DnCDtlYTsmpQpLiDqt7jro7kg65287J2067iM65+s66as7JmAIEhvb2ttYXJrIOyZleuzteydgCAwLjIuMOu2gO2EsCDrr7jqsoDspp0uCgojIyDstpzsspgKLSBab3RMaXQg66y47IScwrfssrTsnbjsp4DroZzqt7g6IGh0dHBzOi8vem90bGl0LmFpZGVubHguc2l0ZS9jaGFuZ2Vsb2cgLCAvZG9jcy9jb25jZXB0cy9ob3ctem90bGl0LWNvbm5lY3RzLXRvLXpvdGVybyAsIC9kb2NzL3JlZmVyZW5jZS9wcm90b2NvbC1saW5rcyAsIC9ibG9nL3YyLXJlbGVhc2UgLCAvYmxvZy92Mi4xLXJlbGVhc2UKLSBab3RMaXQg66a066as7IqkOiBodHRwczovL2dpdGh1Yi5jb20vUEtNLWVyL29ic2lkaWFuLXpvdGxpdC9yZWxlYXNlcwotIFpvdGVybyBJbnRlZ3JhdGlvbjogaHR0cHM6Ly9naXRodWIuY29tL21nbWV5ZXJzL29ic2lkaWFuLXpvdGVyby1pbnRlZ3JhdGlvbiAocmVsZWFzZXMuYXRvbSkKLSBQYW5kb2MgUmVmZXJlbmNlIExpc3Q6IGh0dHBzOi8vZ2l0aHViLmNvbS9tZ21leWVycy9vYnNpZGlhbi1wYW5kb2MtcmVmZXJlbmNlLWxpc3QKLSBab3Rlcm8gQnJpZGdlL0xpbms6IGh0dHBzOi8vZ2l0aHViLmNvbS92YW5ha2F0L3pvdGVyby1icmlkZ2UgLCBodHRwczovL2dpdGh1Yi5jb20vdmFuYWthdC96b3Rlcm8tbGluawotIENpdGF0aW9uczogaHR0cHM6Ly9naXRodWIuY29tL2hhbnMvb2JzaWRpYW4tY2l0YXRpb24tcGx1Z2luCi0gWm90ZXJvIFN5bmMgQ2xpZW50OiBodHRwczovL2dpdGh1Yi5jb20vZnJ0aGpmL29ic2lkaWFuLXpvdGVyby1zeW5jLWNsaWVudAotIEJldHRlciBOb3RlczogaHR0cHM6Ly9naXRodWIuY29tL3dpbmRpbmd3aW5kL3pvdGVyby1iZXR0ZXItbm90ZXMgOyBBY3Rpb25zICYgVGFnczogaHR0cHM6Ly9naXRodWIuY29tL3dpbmRpbmd3aW5kL3pvdGVyby1hY3Rpb25zLXRhZ3MgOyBBdHRhbmdlcjogaHR0cHM6Ly9naXRodWIuY29tL011aXNlRGVzdGlueS96b3Rlcm8tYXR0YW5nZXIgOyBSZWFkaW5nIExpc3Q6IGh0dHBzOi8vZ2l0aHViLmNvbS9Eb21pbmljLURhbGxPc3RvL3pvdGVyby1yZWFkaW5nLWxpc3QKLSBDTURTIFpvdGVybzogaHR0cHM6Ly9naXRodWIuY29tL2pvaG5ma29vOTUxL2NtZHMtem90ZXJvICwg6rSA66CoIOq4sOuhnSBbW0NNRFMgWm90ZXJvIDAuMi4wIOq1rO2YhMK3QVBJIOqzhOyVvcK365GQIOuzvO2KuCDsnbTsoIRdXSwgW1tDTURTIFpvdGVybyAwLjMuMCDigJQg7ZSM65+s6re47J24IOyDne2DnOqzhCDrpqzrt7DsmYAg6riw64qlIOycte2VqV1dCgojIyA5LiDtjJDri6g6IOyngeygkSDqsJzrsJwgdnMg6riw7KG0IO2UjOufrOq3uOyduCAoMjAyNi0wOS0xNCDstpTqsIApCgoqKuqysOuhoDog7Jet7ZWgIOu2hOuLtC4qKiDquIDsk7DquLDCt+ydveq4sCBVWOuKlCBab3RMaXQsIOyXkOydtOyghO2KuMK37JyE7YKkIOyduO2UhOudvOuKlCBDTURTIFpvdGVyby4gWm90ZXJvIEludGVncmF0aW9u6rO8IFBhbmRvYyBSZWZlcmVuY2UgTGlzdOuKlCDslYTsubTsnbTruIwg7IOB7YOc7J2066+A66GcIOu5hO2ZnOyEse2ZlC4KCnwg7JiB7JetIHwg7ISg7YOdIHwg7J207JygIHwKfCAtLS0gfCAtLS0gfCAtLS0gfAp8IOyduOyaqSDsgr3snoXCt+uzuOusuCDroIzrjZTrp4HCt+2MneyYpOuyhMK3RE9DWCDrgrTrs7TrgrTquLDCt+umrOuNlCDrlLDrnbzqsIDquLDCt+y7rOugieyFmCDrsLDsuZggfCAqKlpvdExpdCoqIHwg7Jqw66as6rCAIOunjOuTpOyngCDslYrquLDroZwg7ZWcIOq4sOuKpS4g7Zmc67Cc7ZWcIOycoOyngOuztOyImCgyMDI2LTA3fjA5IOumtOumrOyKpCAyMO2ajCksIFpvdGVybyAxMCDrjIDsnZEgfAp8IGBbQGAg7ISc7KCc7Iqk7YSwwrdSZWZlcmVuY2VzwrdBbm5vdGF0aW9ucyDsgqzsnbTrk5zrsJQgfCBab3RMaXQg7Jqw7ISgLCBDTURT64qUIO2PtOuwsSB8IDAuMy4w7JeQ7IScIOunjOuToCDrtoDrtoQg7KSRIOqwgOyepSDqsrnsuZjripQg7JiB7JetLiDrj5nsi5zsl5Ag7Lyc66m0IOyEnOygnOyKpO2EsOqwgCDrkZgg64ukIOucqOuvgOuhnCBDTURTIOyqvSDsmYTshLHsnYAgT2ZmIHwKfCDsoJXqt5wg7JWE7J2064207Yuw7YuwIOyduOuNseyKpCBKU09OLCBgaW5nZXN0Lm1qc2AgQ0xJLCByZXNvbHZlZC9hbWJpZ3VvdXMvdW5hdmFpbGFibGUg6rWs67aEIHwgKipDTURTIFpvdGVybyoqIHwgcGFwZXItaW5nZXN0IOyKpO2CrOqzvCBDbGF1ZGUgQ29kZSDsl5DsnbTsoITtirjqsIAg7J2964qUIOqzhOyVvS4gWm90TGl07J2AIOyCrOuejOyaqSBVSSB8Cnwg66y47ZeM64W47Yq4IOuztOyhtCDrqqjrjbggfCAqKkNNRFMgWm90ZXJvKiogfCBab3RMaXTsnYAg6rSA66as7JiB7JetIO2GteynuCDqtZDssrQo7JiB7JetIOyViCDtjrjsp5Eg7IaM7IukKS4gQ01EU+uKlCDshLnshZjrs4Qg7ZW07Iuc66GcIO2OuOynkSDqsJDsp4DCt+uztOyhtMK367O06rOgLiDsl5DsnbTsoITtirjqsIAg64W47Yq466W8IOunjOyngOuKlCDsnITtgqTsl5Ag7ZWE7JqUIHwKfCDrkZAg67O87Yq4IG5vdGUtbWFwLCDsnbTrpoTCt2NpdGVrZXkg67OA6rK9IOy2lOyggSwgSG9va21hcmsg66eB7YGsIHwgKipDTURTIFpvdGVybyoqIHwgWm90TGl07JeQIOyXhuydjCB8CnwgWm90ZXJvIOyXsOqysCDslYjsoJXshLEgfCBDTURTIOycoOumrCB8IFpvdExpdCB2MeydgCDrhKTsnbTti7DruIwgU1FMaXRlIOuwlOyduOuUqeydtCBFbGVjdHJvbiDsl4XrjbDsnbTtirjrp4jri6Qg7YyM7IaQLCB2MuuKlCBEQiDtjIzsnbwg7KeB7KCRIOydveq4sCvsu7TtjKjri4jslrguIENNRFPripQgQkJUIFJQQ+unjCDsgqzsmqkgfAp8IOudvOydtOyEoOyKpCB8IOKAlCB8IFpvdExpdOydgCBBR1BMLiDsvZTrk5wg7LCo7JqpIOu2iOqwgCB8CgoqKuq2jOqzoCDsiJzshJwqKgoxLiDrqZTsnbgg67O87Yq47JeQ7IScIFpvdGVybyBJbnRlZ3JhdGlvbiAzLjIuMSwgUGFuZG9jIFJlZmVyZW5jZSBMaXN0IOu5hO2ZnOyEse2ZlC4KMi4gWm90TGl07J2EIOq4gOyTsOq4sCDso7zroKXsnLzroZwgMuyjvCDsgqzsmqkuIENNRFMgWm90ZXJvIOyEpOyglSDihpIgV3JpdGluZyDihpIgQ2l0ZWtleSBjb21wbGV0aW9uID0gT2ZmLgozLiBDTURTIFpvdGVybyAwLjTripQgVUkg7ZmV7J6lIOuMgOyLoCDsnbjtlITrnbwo7J24642x7Iqkwrdpbmdlc3TCt+uztOyhtMK365GQIOuzvO2KuCnsl5Ag7KeR7KSRLiBab3RMaXQg7YWc7ZSM66a/6rO8IOyXkOydtOyghO2KuOqwgCDqsJnsnYAg7J24642x7Iqk66W8IOydveqyjCDtlZjripQg67Cp7ZalLgo0LiAy7KO8IO2bhCDtjJDri6g6IOychO2CpCDtjIzsnbTtlITrnbzsnbjCt+yXkOydtOyghO2KuCDsl7Drj5nsnYQg6rOE7IaNIOyTsOuptCDtlIzrn6zqt7jsnbgg7Jyg7KeALCDsgqzrnozsmqkg66y47ZeM64W47Yq466eMIOuCqOycvOuptCBDTEnCt+yKpO2BrOumve2KuCDsiJjspIDsnLzroZwg7LaV7IaMLgo=</script>
+
+
+<script type="module">
+(async function() {
+	// mermaid sources travel base64-encoded in data-mmd; render with the LATEST mermaid
+	if (document.getElementById('encrypted-data') && !window.__cmdsReady) {
+		await new Promise(function(r) { document.addEventListener('cmds-content-ready', r, { once: true }); });
+	}
+	var containers = Array.from(document.querySelectorAll('.mermaid-container[data-mmd]'));
+	if (!containers.length) return;
+	function decode(b64) {
+		var bin = atob(b64); var bytes = new Uint8Array(bin.length);
+		for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+		return new TextDecoder().decode(bytes);
+	}
+	var sources = containers.map(function(d) { return decode(d.getAttribute('data-mmd')); });
+	var mermaid;
+	try {
+		mermaid = (await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs')).default;
+	} catch (e) {
+		containers.forEach(function(d, i) {
+			var pre = document.createElement('pre');
+			pre.textContent = sources[i];
+			d.replaceWith(pre);
+		});
+		return;
+	}
+	var seq = 0;
+	async function renderAll() {
+		var dark = document.documentElement.dataset.theme === 'dark';
+		mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral', securityLevel: 'strict' });
+		for (var i = 0; i < containers.length; i++) {
+			try {
+				var out = await mermaid.render('cmds-mmd-' + i + '-' + (seq++), sources[i]);
+				containers[i].innerHTML = out.svg;
+			} catch (e) {
+				var pre = document.createElement('pre');
+				pre.textContent = sources[i];
+				containers[i].innerHTML = '';
+				containers[i].appendChild(pre);
+			}
+		}
+	}
+	await renderAll();
+	new MutationObserver(function() { renderAll(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+
+
+<script>
+(function() {
+	var icon = document.getElementById('themeIcon');
+	var SUN = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+	var MOON = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+	function paint(theme) {
+		if (icon) icon.innerHTML = theme === 'dark' ? MOON : SUN;
+	}
+	var btn = document.getElementById('themeToggle');
+	if (btn) btn.addEventListener('click', function() {
+		var next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+		document.documentElement.dataset.theme = next;
+		try { localStorage.setItem('cmds-theme', next); } catch(e) {}
+		paint(next);
+	});
+	paint(document.documentElement.dataset.theme || 'light');
+})();
+</script>
+
+<script>
+(function() {
+	var badge = document.getElementById('expiryBadge');
+	if (!badge) return;
+	var ts = Number(badge.getAttribute('data-expires'));
+	if (!ts) return;
+	var ko = badge.getAttribute('data-lang') === 'ko';
+	var text = document.getElementById('expiryText');
+	function render() {
+		var msLeft = ts - Date.now();
+		var d = new Date(ts);
+		var dateStr = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+		if (msLeft <= 0) {
+			text.textContent = ko ? '만료됨' : 'Expired';
+			badge.classList.add('b-expired');
+		} else {
+			// calendar-date diff, so "D-1" flips at midnight, not at share-time+24h
+			var now = new Date();
+			var days = Math.round(
+				(new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime() -
+				 new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()) / 86400000
+			);
+			var count = days <= 0 ? (ko ? '오늘 만료' : 'expires today') : 'D-' + days;
+			text.textContent = (ko ? dateStr + ' 만료 · ' : 'Expires ' + dateStr + ' · ') + count;
+			if (days <= 3) badge.classList.add('b-soon');
+		}
+		badge.hidden = false;
+	}
+	render();
+	// keep honest across long-lived tabs (midnight rollover)
+	setInterval(render, 60 * 60 * 1000);
+})();
+</script>
+
+
+<script>
+(function() {
+	var PANELS = { toc: 'tocPanel', graph: 'graphPanel' };
+	var hasToc = false, hasGraph = false;
+
+	function docked() { return document.body.classList.contains('cmds-docked'); }
+
+	function setPanel(name, open) {
+		Object.keys(PANELS).forEach(function(k) {
+			var on = k === name ? open : false;
+			document.getElementById(PANELS[k]).classList.toggle('open', on);
+			document.getElementById(k + 'Toggle').classList.toggle('active', on);
+			try { localStorage.setItem('cmds-panel-' + k, on ? '1' : '0'); } catch(e) {}
+		});
+		if (name === 'graph' && open) requestAnimationFrame(function() { relayoutGraph(); });
+	}
+	function wireToggle(name) {
+		document.getElementById(name + 'Toggle').addEventListener('click', function() {
+			var isOpen = document.getElementById(PANELS[name]).classList.contains('open');
+			setPanel(name, !isOpen);
+		});
+	}
+
+	function setDock(on) {
+		if (on && window.innerWidth <= 1100) on = false;
+		var dock = document.getElementById('sideDock');
+		var toc = document.getElementById('tocPanel');
+		var graph = document.getElementById('graphPanel');
+		document.body.classList.toggle('cmds-docked', on);
+		if (on) {
+			Object.keys(PANELS).forEach(function(k) {
+				document.getElementById(PANELS[k]).classList.remove('open');
+				document.getElementById(k + 'Toggle').classList.remove('active');
+			});
+			if (hasToc) dock.appendChild(toc);
+			if (hasGraph) dock.appendChild(graph);
+			dock.hidden = false;
+		} else {
+			dock.hidden = true;
+			document.body.appendChild(toc);
+			document.body.appendChild(graph);
+		}
+		try { localStorage.setItem('cmds-dock', on ? '1' : '0'); } catch(e) {}
+		if (hasGraph) requestAnimationFrame(function() { relayoutGraph(); });
+	}
+
+	function headings() {
+		return document.querySelectorAll('#note-content h1, #note-content h2, #note-content h3, #note-content h4');
+	}
+
+	function assignHeadingIds() {
+		var used = {};
+		headings().forEach(function(h) {
+			var text = (h.textContent || '').trim();
+			if (!text || h.id) return;
+			var slug = text.toLowerCase().replace(/[^0-9a-z\uAC00-\uD7A3\u3131-\u318E\s-]/g, '').replace(/\s+/g, '-') || 'section';
+			if (used[slug] != null) { used[slug]++; slug = slug + '-' + used[slug]; } else { used[slug] = 0; }
+			h.id = slug;
+		});
+	}
+
+	function buildToc() {
+		var list = document.getElementById('tocList');
+		list.innerHTML = '';
+		headings().forEach(function(h) {
+			var text = (h.textContent || '').trim();
+			if (!text || !h.id) return;
+			var a = document.createElement('a');
+			a.href = '#' + h.id;
+			a.textContent = text;
+			a.className = 'toc-' + h.tagName.toLowerCase();
+			a.title = text;
+			list.appendChild(a);
+		});
+		return list.children.length >= 2;
+	}
+
+	// highlight the section currently in view (and keep it visible in a scrolling TOC)
+	function scrollSpy() {
+		var links = document.querySelectorAll('#tocList a');
+		if (!links.length) return;
+		var map = {};
+		links.forEach(function(a) { map[decodeURIComponent(a.hash.slice(1))] = a; });
+		var obs = new IntersectionObserver(function(entries) {
+			entries.forEach(function(en) {
+				if (!en.isIntersecting) return;
+				links.forEach(function(a) { a.classList.remove('active'); });
+				var a = map[en.target.id];
+				if (a) {
+					a.classList.add('active');
+					if (a.scrollIntoView) a.scrollIntoView({ block: 'nearest' });
+				}
+			});
+		}, { rootMargin: '0px 0px -75% 0px' });
+		headings().forEach(function(h) { if (h.id) obs.observe(h); });
+	}
+
+	var ICON_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>';
+	var ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+	var ICON_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+
+	function enhanceCodeBlocks() {
+		document.querySelectorAll('#note-content pre').forEach(function(pre) {
+			if (pre.querySelector('.code-copy')) return;
+			var code = pre.querySelector('code');
+			var langMatch = ((code ? code.className : '') + ' ' + pre.className).match(/language-([a-z0-9+#-]+)/i);
+			if (langMatch && langMatch[1] !== 'undefined') pre.setAttribute('data-lang', langMatch[1]);
+			var btn = document.createElement('button');
+			btn.className = 'code-copy';
+			btn.setAttribute('aria-label', 'Copy code');
+			btn.innerHTML = ICON_COPY;
+			btn.addEventListener('click', function() {
+				var code = pre.querySelector('code');
+				var textToCopy = (code || pre).innerText.replace(/\n$/, '');
+				navigator.clipboard.writeText(textToCopy).then(function() {
+					btn.innerHTML = ICON_CHECK;
+					btn.classList.add('copied');
+					setTimeout(function() { btn.innerHTML = ICON_COPY; btn.classList.remove('copied'); }, 1500);
+				});
+			});
+			pre.appendChild(btn);
+		});
+	}
+
+	// hover link icon on headings — click copies the deep link
+	function headingAnchors() {
+		headings().forEach(function(h) {
+			if (!h.id || h.querySelector('.h-anchor')) return;
+			var a = document.createElement('a');
+			a.className = 'h-anchor';
+			a.href = '#' + h.id;
+			a.setAttribute('aria-label', 'Copy link to section');
+			a.innerHTML = ICON_LINK;
+			a.addEventListener('click', function(e) {
+				e.preventDefault();
+				history.replaceState(null, '', '#' + h.id);
+				try { navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id); } catch(err) {}
+				h.scrollIntoView({ behavior: 'smooth' });
+			});
+			h.appendChild(a);
+		});
+	}
+
+	// ══════════ markdown source tools (copy / download) ══════════
+	function mdSource() {
+		if (window.__cmdsMd != null) return window.__cmdsMd; // decrypted payload
+		var el = document.getElementById('md-source');
+		if (!el) return null;
+		try {
+			var bin = atob(el.textContent.trim());
+			var bytes = new Uint8Array(bin.length);
+			for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+			return new TextDecoder().decode(bytes);
+		} catch(e) { return null; }
+	}
+
+	function wireMdTools() {
+		var md = mdSource();
+		if (md == null) return;
+		var copyBtn = document.getElementById('mdCopy');
+		var dlBtn = document.getElementById('mdDownload');
+		if (copyBtn) {
+			copyBtn.hidden = false;
+			var idle = copyBtn.innerHTML;
+			copyBtn.addEventListener('click', function() {
+				navigator.clipboard.writeText(md).then(function() {
+					copyBtn.innerHTML = ICON_CHECK;
+					copyBtn.classList.add('active');
+					setTimeout(function() { copyBtn.innerHTML = idle; copyBtn.classList.remove('active'); }, 1500);
+				});
+			});
+		}
+		if (dlBtn) {
+			dlBtn.hidden = false;
+			dlBtn.addEventListener('click', function() {
+				var name = (document.title || 'note').replace(/[\\/:*?"<>|]/g, '-').trim() || 'note';
+				var blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+				var url = URL.createObjectURL(blob);
+				var a = document.createElement('a');
+				a.href = url;
+				a.download = name + '.md';
+				document.body.appendChild(a);
+				a.click();
+				a.remove();
+				setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+			});
+		}
+	}
+
+	// ══════════ interactive force-directed local graph ══════════
+	var G = null; // { data, pts, adj, deg, W, H, k, tx, ty, hover }
+
+	function readGraphData() {
+		var dataEl = document.getElementById('graph-data');
+		if (!dataEl) return null;
+		var g;
+		try { g = JSON.parse(dataEl.textContent); } catch(e) { return null; }
+		if (!g.nodes || g.nodes.length < 2) return null;
+		return g;
+	}
+
+	function runLayout(g, W, H) {
+		var N = g.nodes.length;
+		var pts = g.nodes.map(function(n, i) {
+			var a = i * 2.399963;
+			var r = n.level === 0 ? 0 : (n.level === 1 ? 0.35 : 0.7) * Math.min(W, H) / 2;
+			return { x: W / 2 + r * Math.cos(a), y: H / 2 + r * Math.sin(a), vx: 0, vy: 0 };
+		});
+		var SPRING = 0.03, REST = Math.min(W, H) / 3.2, REPEL = Math.min(W, H) * 55, GRAV = 0.008;
+		for (var it = 0; it < 300; it++) {
+			var damp = 0.85 * (1 - it / 340);
+			for (var i = 0; i < N; i++) {
+				for (var j = i + 1; j < N; j++) {
+					var dx = pts[j].x - pts[i].x, dy = pts[j].y - pts[i].y;
+					var d2 = dx * dx + dy * dy + 0.01, d = Math.sqrt(d2);
+					var f = Math.min(REPEL / d2, 8);
+					var fx = (dx / d) * f, fy = (dy / d) * f;
+					pts[i].vx -= fx; pts[i].vy -= fy;
+					pts[j].vx += fx; pts[j].vy += fy;
+				}
+			}
+			g.edges.forEach(function(e) {
+				var a = pts[e[0]], b = pts[e[1]];
+				var dx = b.x - a.x, dy = b.y - a.y;
+				var d = Math.sqrt(dx * dx + dy * dy) + 0.01;
+				var f = SPRING * (d - REST);
+				var fx = (dx / d) * f, fy = (dy / d) * f;
+				a.vx += fx; a.vy += fy;
+				b.vx -= fx; b.vy -= fy;
+			});
+			for (var k2 = 0; k2 < N; k2++) {
+				pts[k2].vx += (W / 2 - pts[k2].x) * GRAV;
+				pts[k2].vy += (H / 2 - pts[k2].y) * GRAV;
+				pts[k2].x += pts[k2].vx * damp;
+				pts[k2].y += pts[k2].vy * damp;
+				pts[k2].vx *= 0.6; pts[k2].vy *= 0.6;
+			}
+			pts[0].x = W / 2; pts[0].y = H / 2; pts[0].vx = 0; pts[0].vy = 0;
+		}
+		var minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9;
+		pts.forEach(function(pt) {
+			minX = Math.min(minX, pt.x); maxX = Math.max(maxX, pt.x);
+			minY = Math.min(minY, pt.y); maxY = Math.max(maxY, pt.y);
+		});
+		var M = 30;
+		var sx = (W - M * 2) / Math.max(maxX - minX, 1), sy = (H - M * 2) / Math.max(maxY - minY, 1);
+		var sc = Math.min(sx, sy, 1.5);
+		pts.forEach(function(pt) {
+			pt.x = M + (pt.x - minX) * sc + (W - M * 2 - (maxX - minX) * sc) / 2;
+			pt.y = M + (pt.y - minY) * sc + (H - M * 2 - (maxY - minY) * sc) / 2;
+		});
+		return pts;
+	}
+
+	function canvasSize() {
+		var canvas = document.getElementById('graphCanvas');
+		var panel = document.getElementById('graphPanel');
+		var wasHidden = !panel.classList.contains('open') && !docked();
+		if (wasHidden) { panel.style.visibility = 'hidden'; panel.classList.add('open'); }
+		var W = Math.max(canvas.clientWidth || panel.clientWidth - 36, 200);
+		var H = docked() ? Math.max(canvas.clientHeight, 200) : 280;
+		if (wasHidden) { panel.classList.remove('open'); panel.style.visibility = ''; }
+		return { W: W, H: H };
+	}
+
+	function relayoutGraph() {
+		var data = G ? G.data : readGraphData();
+		if (!data) return;
+		var sz = canvasSize();
+		var adj = data.nodes.map(function() { return {}; });
+		var deg = data.nodes.map(function() { return 0; });
+		data.edges.forEach(function(e) {
+			adj[e[0]][e[1]] = true; adj[e[1]][e[0]] = true;
+			deg[e[0]]++; deg[e[1]]++;
+		});
+		G = {
+			data: data, adj: adj, deg: deg,
+			pts: runLayout(data, sz.W, sz.H),
+			W: sz.W, H: sz.H, k: 1, tx: 0, ty: 0, hover: -1,
+		};
+		renderGraph();
+	}
+
+	function renderGraph() {
+		if (!G) return;
+		var canvas = document.getElementById('graphCanvas');
+		var dpr = window.devicePixelRatio || 1;
+		canvas.width = G.W * dpr; canvas.height = G.H * dpr;
+		if (!docked()) canvas.style.height = G.H + 'px';
+		var ctx = canvas.getContext('2d');
+		ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+		ctx.clearRect(0, 0, G.W, G.H);
+
+		var css = getComputedStyle(document.documentElement);
+		var noteColor = css.getPropertyValue('--graph-note').trim() || css.getPropertyValue('--accent').trim();
+		var muted = css.getPropertyValue('--muted').trim();
+		var text = css.getPropertyValue('--text').trim();
+		var border = css.getPropertyValue('--border').trim();
+		var cardBg = css.getPropertyValue('--card-bg').trim();
+
+		var g = G.data, pts = G.pts, k = G.k, hover = G.hover;
+		var sx = function(pt) { return pt.x * k + G.tx; };
+		var sy = function(pt) { return pt.y * k + G.ty; };
+		var inHood = function(i) { return hover < 0 || i === hover || G.adj[hover][i]; };
+
+		g.edges.forEach(function(e) {
+			var touches = hover >= 0 && (e[0] === hover || e[1] === hover);
+			if (hover >= 0) {
+				ctx.globalAlpha = touches ? 0.95 : 0.08;
+				ctx.strokeStyle = touches ? muted : border;
+				ctx.lineWidth = touches ? 1.5 : 1;
+			} else {
+				ctx.globalAlpha = (g.nodes[e[0]].level === 2 || g.nodes[e[1]].level === 2) ? 0.45 : 0.8;
+				ctx.strokeStyle = border;
+				ctx.lineWidth = 1;
+			}
+			ctx.beginPath();
+			ctx.moveTo(sx(pts[e[0]]), sy(pts[e[0]]));
+			ctx.lineTo(sx(pts[e[1]]), sy(pts[e[1]]));
+			ctx.stroke();
+		});
+
+		var rOf = function(i) {
+			var base = i === 0 ? 7 : Math.min(3.2 + G.deg[i] * 0.6, 6.5);
+			return base * Math.pow(k, 0.75);
+		};
+		g.nodes.forEach(function(n, i) {
+			var dim = hover >= 0 ? (inHood(i) ? 1 : 0.14) : (n.level === 2 ? 0.65 : 1);
+			ctx.globalAlpha = dim;
+			ctx.fillStyle = n.type === 'tag' ? '#E985A2' : noteColor;
+			ctx.beginPath(); ctx.arc(sx(pts[i]), sy(pts[i]), rOf(i), 0, Math.PI * 2); ctx.fill();
+			if (i === hover) {
+				ctx.strokeStyle = text; ctx.lineWidth = 1.5;
+				ctx.beginPath(); ctx.arc(sx(pts[i]), sy(pts[i]), rOf(i) + 2.5, 0, Math.PI * 2); ctx.stroke();
+			}
+		});
+
+		// labels: center always; L1 at normal zoom; everything once zoomed in;
+		// hovering shows the whole neighborhood regardless of zoom
+		g.nodes.forEach(function(n, i) {
+			var show;
+			if (hover >= 0) show = inHood(i);
+			else show = i === 0 || (n.level === 1 && (k >= 1.05 || g.nodes.length <= 20)) || k >= 1.9 || g.nodes.length <= 12;
+			if (!show) return;
+			var fs = i === 0 || i === hover ? 11.5 : 10.5;
+			ctx.font = (i === 0 || i === hover ? 'bold ' : '') + fs + 'px -apple-system, sans-serif';
+			var label = n.label.length > 22 ? n.label.slice(0, 21) + '…' : n.label;
+			var tw = ctx.measureText(label).width;
+			var lx = Math.max(2, Math.min(G.W - tw - 2, sx(pts[i]) - tw / 2));
+			var ly = sy(pts[i]) + rOf(i) + fs + 2;
+			var alpha = hover >= 0 ? (inHood(i) ? 1 : 0) : (n.level === 2 && k < 2 ? 0.7 : 0.95);
+			ctx.globalAlpha = alpha * 0.8;
+			ctx.fillStyle = cardBg;
+			ctx.fillRect(lx - 3, ly - fs + 1, tw + 6, fs + 3);
+			ctx.globalAlpha = alpha;
+			ctx.fillStyle = i === 0 || i === hover ? text : muted;
+			ctx.fillText(label, lx, ly);
+		});
+		ctx.globalAlpha = 1;
+	}
+
+	function zoomBy(factor) {
+		if (!G) return;
+		var mx = G.W / 2, my = G.H / 2;
+		var nk = Math.max(0.35, Math.min(4.5, G.k * factor));
+		factor = nk / G.k;
+		G.tx = mx - (mx - G.tx) * factor;
+		G.ty = my - (my - G.ty) * factor;
+		G.k = nk;
+		renderGraph();
+	}
+
+	function wireGraphInteraction() {
+		var canvas = document.getElementById('graphCanvas');
+		var dragging = false, moved = false, lastX = 0, lastY = 0;
+
+		document.getElementById('gZoomIn').addEventListener('click', function() { zoomBy(1.35); });
+		document.getElementById('gZoomOut').addEventListener('click', function() { zoomBy(1 / 1.35); });
+		document.getElementById('gReset').addEventListener('click', function() {
+			if (G) { G.k = 1; G.tx = 0; G.ty = 0; renderGraph(); }
+		});
+
+		function pick(mx, my) {
+			if (!G) return -1;
+			var best = -1, bestD = 12 * 12;
+			G.pts.forEach(function(pt, i) {
+				var dx = pt.x * G.k + G.tx - mx, dy = pt.y * G.k + G.ty - my;
+				var d = dx * dx + dy * dy;
+				if (d < bestD) { bestD = d; best = i; }
+			});
+			return best;
+		}
+		function pos(e) {
+			var r = canvas.getBoundingClientRect();
+			return { x: e.clientX - r.left, y: e.clientY - r.top };
+		}
+
+		canvas.addEventListener('wheel', function(e) {
+			if (!G) return;
+			e.preventDefault();
+			var m = pos(e);
+			var factor = Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.002));
+			var nk = Math.max(0.35, Math.min(4.5, G.k * factor));
+			factor = nk / G.k;
+			G.tx = m.x - (m.x - G.tx) * factor;
+			G.ty = m.y - (m.y - G.ty) * factor;
+			G.k = nk;
+			renderGraph();
+		}, { passive: false });
+
+		canvas.addEventListener('pointerdown', function(e) {
+			if (!G) return;
+			dragging = true; moved = false;
+			lastX = e.clientX; lastY = e.clientY;
+			canvas.classList.add('dragging');
+			canvas.setPointerCapture(e.pointerId);
+		});
+		canvas.addEventListener('pointermove', function(e) {
+			if (!G) return;
+			if (dragging) {
+				var dx = e.clientX - lastX, dy = e.clientY - lastY;
+				if (Math.abs(dx) + Math.abs(dy) > 2) moved = true;
+				G.tx += dx; G.ty += dy;
+				lastX = e.clientX; lastY = e.clientY;
+				renderGraph();
+			} else {
+				var m = pos(e);
+				var h = pick(m.x, m.y);
+				canvas.classList.toggle('on-node', h >= 0);
+				if (h !== G.hover) { G.hover = h; renderGraph(); }
+			}
+		});
+		canvas.addEventListener('pointerup', function(e) {
+			dragging = false;
+			canvas.classList.remove('dragging');
+			// double-click-ish: a clean click on empty space resets the view
+			if (!moved) {
+				var m = pos(e);
+				if (pick(m.x, m.y) < 0 && G.k !== 1) { G.k = 1; G.tx = 0; G.ty = 0; renderGraph(); }
+			}
+		});
+		canvas.addEventListener('pointerleave', function() {
+			if (G && G.hover !== -1) { G.hover = -1; renderGraph(); }
+			canvas.classList.remove('on-node');
+		});
+	}
+
+	function init() {
+		// start from a known-clean panel state before restoring preferences
+		document.body.classList.remove('cmds-docked');
+		document.getElementById('sideDock').hidden = true;
+		assignHeadingIds();
+		enhanceCodeBlocks();
+		headingAnchors();
+		wireMdTools();
+		hasToc = buildToc();
+		if (hasToc) {
+			document.getElementById('tocToggle').hidden = false;
+			wireToggle('toc');
+			scrollSpy();
+		}
+		hasGraph = !!readGraphData();
+		if (hasGraph) {
+			document.getElementById('graphToggle').hidden = false;
+			wireToggle('graph');
+			wireGraphInteraction();
+			new MutationObserver(function() { renderGraph(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+			window.addEventListener('resize', function() {
+				if (docked() && window.innerWidth <= 1100) { setDock(false); return; }
+				if (docked()) requestAnimationFrame(function() { relayoutGraph(); });
+			});
+		}
+		if (hasToc || hasGraph) {
+			document.querySelectorAll('[data-pin]').forEach(function(btn) {
+				btn.addEventListener('click', function() { setDock(!docked()); });
+			});
+			// floating popups close on any click outside the card (docked stays put)
+			document.addEventListener('pointerdown', function(e) {
+				if (docked()) return;
+				if (e.target.closest('.side-panel, .side-tools')) return;
+				Object.keys(PANELS).forEach(function(k) {
+					if (document.getElementById(PANELS[k]).classList.contains('open')) setPanel(k, false);
+				});
+			});
+		}
+		try {
+			if (localStorage.getItem('cmds-dock') === '1' && (hasToc || hasGraph)) {
+				setDock(true);
+			} else if (localStorage.getItem('cmds-panel-toc') === '1' && hasToc) setPanel('toc', true);
+			else if (localStorage.getItem('cmds-panel-graph') === '1' && hasGraph) setPanel('graph', true);
+		} catch(e) {}
+	}
+
+	if (document.getElementById('encrypted-data') && !window.__cmdsReady) {
+		document.addEventListener('cmds-content-ready', init, { once: true });
+	} else {
+		init();
+	}
+})();
+</script>
+
+</body>
+</html>
